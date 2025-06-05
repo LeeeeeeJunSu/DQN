@@ -1,7 +1,0 @@
-Episode: 998
-Reward: 1015.4614
-Epsilon: 0.0100
-Learn Count: 118
-Update Count: 118908
-Average Loss: 0.0000
-Average Max Q: 87.6519

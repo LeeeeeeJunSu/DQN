@@ -1,7 +1,0 @@
-Episode: 893
-Reward: 1.1450
-Epsilon: 0.0100
-Learn Count: 105
-Update Count: 105640
-Average Loss: 0.0000
-Average Max Q: 58.7447

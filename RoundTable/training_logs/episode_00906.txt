@@ -1,7 +1,0 @@
-Episode: 906
-Reward: 1471.0140
-Epsilon: 0.0100
-Learn Count: 107
-Update Count: 107144
-Average Loss: 85.1050
-Average Max Q: 33.4200

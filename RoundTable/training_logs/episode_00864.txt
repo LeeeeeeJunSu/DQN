@@ -1,7 +1,0 @@
-Episode: 864
-Reward: 4789.3721
-Epsilon: 0.0100
-Learn Count: 103
-Update Count: 103202
-Average Loss: 66.6011
-Average Max Q: 54.8659

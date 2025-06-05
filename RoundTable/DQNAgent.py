@@ -122,7 +122,7 @@ class DQNAgent:
                 if norm_center > 0:
                     to_center /= norm_center
                     accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
-                    reward = float(np.dot(accel_vec, to_center))
+                    reward = float(np.dot(accel_vec, to_center)) * 1000.0
                 
             print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
             self.logger.info(

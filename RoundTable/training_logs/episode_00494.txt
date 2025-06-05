@@ -1,7 +1,0 @@
-Episode: 494
-Reward: 980.7531
-Epsilon: 0.0100
-Learn Count: 60
-Update Count: 60515
-Average Loss: 0.0000
-Average Max Q: 14.6614

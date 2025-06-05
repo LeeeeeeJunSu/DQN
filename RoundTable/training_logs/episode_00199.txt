@@ -1,7 +1,0 @@
-Episode: 199
-Reward: 0.8230
-Epsilon: 0.0100
-Learn Count: 23
-Update Count: 23727
-Average Loss: 0.0000
-Average Max Q: 11.9831

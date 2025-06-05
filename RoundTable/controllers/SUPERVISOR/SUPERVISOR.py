@@ -11,7 +11,7 @@ timestep = int(supervisor.getBasicTimeStep())
 
 # 사전정의
 agent_count = 8
-reset_standard = 0.25
+reset_standard = 0.8
 
 # Supervisor <-> Robot 소켓 통신 열기 
 time.sleep(0.2)
@@ -34,7 +34,7 @@ for i in range(agent_count):
     robot_body_list.append(supervisor.getFromDef(f"ROBOT{i:02}"))
 
 # 공 초기 속도 랜덤 설정
-speed = 1.0
+speed = 0.5
 angle = random.uniform(0, 2 * math.pi)
 vx = speed * math.cos(angle)
 vy = speed * math.sin(angle)
@@ -56,7 +56,9 @@ while supervisor.step(timestep) != -1:
         agent_position_y = robot_body_list[i].getField("translation").getSFVec3f()[1]
         distance_to_ball = ((data_dict['ball_x'] - agent_position_x) ** 2 + (data_dict['ball_y'] - agent_position_y) ** 2) ** 0.5
         data_dict[f'agent_distance_to_ball_{i}'] = distance_to_ball
-    data_dict['IsDone'] = data_dict['ball_z'] <= reset_standard
+    
+    # Ball이 중심으로부터 0.8이상 떨어지면 종료
+    data_dict['IsDone'] = data_dict['ball_x'] ** 2 + data_dict['ball_y'] ** 2 > reset_standard
 
     if(data_dict['IsDone']):
         supervisor.worldReload()
@@ -66,7 +68,6 @@ while supervisor.step(timestep) != -1:
 
     # DQNServer로부터 액션 받기
     action_list = json.loads(dqn_server_communicator.recv(1024).decode('utf-8'))
-    print(action_list)
 
     # 각 로봇에 액션 전송
     for i in range(agent_count):
