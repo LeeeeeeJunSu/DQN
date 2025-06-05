@@ -3,6 +3,7 @@ import socket
 import time
 import json
 import random
+import math
 
 # 기본 정의
 supervisor = Supervisor()
@@ -33,7 +34,11 @@ for i in range(agent_count):
     robot_body_list.append(supervisor.getFromDef(f"ROBOT{i:02}"))
 
 # 공 초기 속도 랜덤 설정
-ball.setVelocity([random.uniform(-1.5, 1.5), random.uniform(-1.0, 1.0), 0, 0, 0, 0])
+speed = 1.0
+angle = random.uniform(0, 2 * math.pi)
+vx = speed * math.cos(angle)
+vy = speed * math.sin(angle)
+ball.setVelocity([vx, vy, 0, 0, 0, 0])
 
 # Robot 제어 및 DQN 학습
 while supervisor.step(timestep) != -1:
