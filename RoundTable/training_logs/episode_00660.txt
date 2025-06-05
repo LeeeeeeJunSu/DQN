@@ -1,0 +1,7 @@
+Episode: 660
+Reward: 893.5635
+Epsilon: 0.0100
+Learn Count: 78
+Update Count: 78851
+Average Loss: 0.0000
+Average Max Q: 21.3364

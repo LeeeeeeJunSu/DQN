@@ -1,0 +1,7 @@
+Episode: 944
+Reward: 703.5441
+Epsilon: 0.0100
+Learn Count: 111
+Update Count: 111467
+Average Loss: 0.0000
+Average Max Q: 107.5027

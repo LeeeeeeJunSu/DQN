@@ -1,0 +1,7 @@
+Episode: 834
+Reward: 740.8555
+Epsilon: 0.0100
+Learn Count: 99
+Update Count: 99350
+Average Loss: 0.0000
+Average Max Q: 91.6462
