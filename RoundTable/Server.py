@@ -9,7 +9,8 @@ if __name__ == '__main__':
 
     agent_list = []
     for i in range(agent_count):
-        agent = DQNAgent(10000, 1000, 1000, 1.0, 0.01, 0.999, 10, 0.99)
+        agent = DQNAgent(10000, 1000, 1000, 1.0, 0.01, 0.999, 10, 0.99,
+                         agent_name=f"agent_{i}")
         #agent = DQNAgent(100, 10, 10, 1.0, 0.01, 0.995, 10, 0.99)
         agent.start()
         agent_list.append(agent)
