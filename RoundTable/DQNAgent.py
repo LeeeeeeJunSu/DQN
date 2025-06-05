@@ -113,10 +113,16 @@ class DQNAgent:
             ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z, distance, done = self.get_state()
             state = np.array([ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z], dtype=np.float32)
 
-            if is_cooperative:
-                reward = (1.2 - np.sqrt(ball_x ** 2 + ball_y ** 2)) / 0.1
-            else:
-                reward = -distance
+            reward = 0.0
+            if prev_state is not None:
+                delta_vx = spd_x - prev_state[3]
+                delta_vy = spd_y - prev_state[4]
+                to_center = np.array([-ball_x, -ball_y], dtype=np.float32)
+                norm_center = np.linalg.norm(to_center)
+                if norm_center > 0:
+                    to_center /= norm_center
+                    accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
+                    reward = float(np.dot(accel_vec, to_center))
                 
             print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
             self.logger.info(
