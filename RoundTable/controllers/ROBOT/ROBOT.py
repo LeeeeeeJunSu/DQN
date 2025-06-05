@@ -31,7 +31,7 @@ while robot.step(timestep) != -1:
     action = float(supervisor_communicator_conn.recv(1024).decode())
     cur_pos = sensor_device.getValue()
     
-    if (cur_pos < min_position and action) < 0.0 or (cur_pos > max_position and action > 0.0):
+    if (cur_pos < min_position) and (action < 0.0) or ((cur_pos > max_position) and (action > 0.0)):
         linear_device.setVelocity(0.0)
     else:
         linear_device.setVelocity(action)
