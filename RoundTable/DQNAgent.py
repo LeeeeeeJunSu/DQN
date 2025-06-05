@@ -8,14 +8,16 @@ import random
 import numpy as np
 from collections import deque
 import os
+import logging
 
 # 협동 시나리오
 is_cooperative = True
 action_one = 1.0
 action_two = -1.0
+
+# 모든 에이전트 로그의 기본 디렉터리
 log_dir = "training_logs"
 os.makedirs(log_dir, exist_ok=True)
-summary_log_path = os.path.join(log_dir, "training_summary.txt")
 
 class Network(nn.Module):
     def __init__(self):
@@ -31,7 +33,8 @@ class Network(nn.Module):
 
 
 class DQNAgent:
-    def __init__(self, replay_buffer_size, warmup_count, batch_size, eps_start, eps_end, eps_decay, network_update_freq, gamma):
+    def __init__(self, replay_buffer_size, warmup_count, batch_size, eps_start,
+                 eps_end, eps_decay, network_update_freq, gamma, agent_name="agent"):
         self.replay_buffer_size = replay_buffer_size
         self.warmup_count = warmup_count
         self.batch_size = batch_size
@@ -40,6 +43,22 @@ class DQNAgent:
         self.eps_decay = eps_decay
         self.network_update_freq = network_update_freq
         self.gamma = gamma
+
+        # 에이전트 이름과 전용 로그 디렉터리 준비
+        self.agent_name = agent_name
+        self.log_dir = os.path.join(log_dir, agent_name)
+        os.makedirs(self.log_dir, exist_ok=True)
+        self.summary_log_path = os.path.join(self.log_dir, "training_summary.txt")
+
+        # 에이전트별 로거 설정
+        self.logger = logging.getLogger(agent_name)
+        self.logger.setLevel(logging.INFO)
+        handler = logging.FileHandler(os.path.join(self.log_dir, "agent_debug.log"))
+        formatter = logging.Formatter('%(asctime)s %(message)s')
+        handler.setFormatter(formatter)
+        # 동일 이름의 핸들러 중복 추가 방지
+        if not self.logger.handlers:
+            self.logger.addHandler(handler)
 
         self.input_queue = []
         self.output_queue = []
@@ -100,6 +119,8 @@ class DQNAgent:
                 reward = -distance
                 
             print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
+            self.logger.info(
+                f"step={update_count}, reward={reward:.4f}, epsilon={epsilon:.4f}")
 
             episode_reward += reward
 
@@ -120,6 +141,7 @@ class DQNAgent:
                 state_mean = warmup_np.mean(axis=0)
                 state_std = warmup_np.std(axis=0) + 1e-8
                 print(f"Warmup complete.")
+                self.logger.info("Warmup complete")
 
             if prev_state is not None and prev_action is not None:
                 replay_buffer.append((prev_state, prev_action, reward, state, done))
@@ -159,18 +181,22 @@ class DQNAgent:
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
+                self.logger.info(
+                    f"learn_step={learn_count}, loss={loss.item():.4f}")
                 loss_list.append(loss.item())
                 learn_count += 1
 
                 if learn_count % self.network_update_freq == 0:
                     target_network.load_state_dict(q_network.state_dict())
+                    self.logger.info(
+                        f"target network updated at learn_step={learn_count}")
 
             epsilon = max(self.eps_end, epsilon * self.eps_decay)
 
             if done:
                 avg_loss = np.mean(loss_list) if loss_list else 0.0
                 avg_qmax = np.mean(qmax_list) if qmax_list else 0.0
-                log_path = os.path.join(log_dir, f"episode_{episode_index:05d}.txt")
+                log_path = os.path.join(self.log_dir, f"episode_{episode_index:05d}.txt")
                 with open(log_path, "w") as f:
                     f.write(f"Episode: {episode_index}\n")
                     f.write(f"Reward: {episode_reward:.4f}\n")
@@ -180,8 +206,11 @@ class DQNAgent:
                     f.write(f"Average Loss: {avg_loss:.4f}\n")
                     f.write(f"Average Max Q: {avg_qmax:.4f}\n")
 
-                with open(summary_log_path, "a") as f:
+                with open(self.summary_log_path, "a") as f:
                     f.write(f"{episode_index},{episode_reward:.4f},{avg_loss:.4f},{avg_qmax:.4f},{epsilon:.4f}\n")
+
+                self.logger.info(
+                    f"episode_end index={episode_index} reward={episode_reward:.4f} epsilon={epsilon:.4f}")
 
                 episode_index += 1
                 episode_reward = 0
