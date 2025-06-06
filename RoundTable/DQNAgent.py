@@ -10,10 +10,8 @@ from collections import deque
 import os
 import logging
 
-# 협동 시나리오
-is_cooperative = True
-action_one = 1.0
-action_two = -1.0
+# 속도 선택을 위한 행동 값 목록
+action_values = [1.0, 0.5, 0.0, -0.5, -1.0]
 
 # 모든 에이전트 로그의 기본 디렉터리
 log_dir = "training_logs"
@@ -24,12 +22,18 @@ class Network(nn.Module):
         super(Network, self).__init__()
         self.fc1 = nn.Linear(7, 128)
         self.fc2 = nn.Linear(128, 128)
-        self.fc3 = nn.Linear(128, 2)
+        self.fc3 = nn.Linear(128, 128)
+        self.fc4 = nn.Linear(128, 5)
+        self.dropout = nn.Dropout(p=0.2)
 
     def forward(self, x):
         x = F.relu(self.fc1(x))
+        x = self.dropout(x)
         x = F.relu(self.fc2(x))
-        return self.fc3(x)
+        x = self.dropout(x)
+        x = F.relu(self.fc3(x))
+        x = self.dropout(x)
+        return self.fc4(x)
 
 
 class DQNAgent:
@@ -132,8 +136,8 @@ class DQNAgent:
 
             if state_mean is None:
                 if len(warmup_states) < self.warmup_count:
-                    action = random.choice([0, 1])
-                    self.output_queue.append(action_one if action == 0 else action_two)
+                    action = random.choice(list(range(5)))
+                    self.output_queue.append(action_values[action])
 
                     if prev_state is not None:
                         replay_buffer.append((prev_state, prev_action, reward, state, done))
@@ -156,7 +160,7 @@ class DQNAgent:
             state_tensor = torch.tensor([norm_state], dtype=torch.float32)
 
             if random.random() < epsilon:
-                action = random.choice([0, 1])
+                action = random.choice(list(range(5)))
             else:
                 with torch.no_grad():
                     q_values = q_network(state_tensor)
@@ -165,7 +169,7 @@ class DQNAgent:
 
             prev_state = state
             prev_action = action
-            self.output_queue.append(action_one if action == 0 else action_two)
+            self.output_queue.append(action_values[action])
             update_count += 1
 
             if len(replay_buffer) >= self.batch_size and update_count % self.batch_size == 0:
@@ -197,9 +201,8 @@ class DQNAgent:
                     self.logger.info(
                         f"target network updated at learn_step={learn_count}")
 
-            epsilon = max(self.eps_end, epsilon * self.eps_decay)
-
             if done:
+                epsilon = max(self.eps_end, epsilon * self.eps_decay)
                 avg_loss = np.mean(loss_list) if loss_list else 0.0
                 avg_qmax = np.mean(qmax_list) if qmax_list else 0.0
                 log_path = os.path.join(self.log_dir, f"episode_{episode_index:05d}.txt")
