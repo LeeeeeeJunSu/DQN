@@ -58,11 +58,11 @@ while supervisor.step(timestep) != -1:
     data_dict['ball_speed_y'] = ball.getVelocity()[1]
     data_dict['ball_speed_z'] = ball.getVelocity()[2]
     for i in range(agent_count):
-        data_dict[f'agent_z_{i}'] = robot_gripper_list[i].getField("translation").getSFVec3f()[2]
-        agent_position_x = robot_body_list[i].getField("translation").getSFVec3f()[0]
-        agent_position_y = robot_body_list[i].getField("translation").getSFVec3f()[1]
-        distance_to_ball = ((data_dict['ball_x'] - agent_position_x) ** 2 + (data_dict['ball_y'] - agent_position_y) ** 2) ** 0.5
-        data_dict[f'agent_distance_to_ball_{i}'] = distance_to_ball
+        pos = robot_body_list[i].getField("translation").getSFVec3f()
+        data_dict[f'agent_pos_{i}_x'] = pos[0]
+        data_dict[f'agent_pos_{i}_y'] = pos[1]
+        data_dict[f'agent_pos_{i}_z'] = pos[2]
+        data_dict[f'agent_gripper_z_{i}'] = robot_gripper_list[i].getField("translation").getSFVec3f()[2]
     
     # Ball이 중심으로부터 0.8이상 떨어지면 종료
     data_dict['IsDone'] = data_dict['ball_x'] ** 2 + data_dict['ball_y'] ** 2 > reset_standard
