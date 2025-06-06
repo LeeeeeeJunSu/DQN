@@ -20,7 +20,7 @@ os.makedirs(log_dir, exist_ok=True)
 class Network(nn.Module):
     def __init__(self):
         super(Network, self).__init__()
-        self.fc1 = nn.Linear(7, 128)
+        self.fc1 = nn.Linear(8, 128)
         self.fc2 = nn.Linear(128, 128)
         self.fc3 = nn.Linear(128, 128)
         self.fc4 = nn.Linear(128, 5)
@@ -53,6 +53,10 @@ class DQNAgent:
         self.log_dir = os.path.join(log_dir, agent_name)
         os.makedirs(self.log_dir, exist_ok=True)
         self.summary_log_path = os.path.join(self.log_dir, "training_summary.txt")
+
+        if not os.path.exists(self.summary_log_path):
+            with open(self.summary_log_path, "w") as f:
+                f.write("episode,reward,avg_loss,avg_qmax,epsilon\n")
 
         # 에이전트별 로거 설정
         self.logger = logging.getLogger(agent_name)
@@ -115,7 +119,7 @@ class DQNAgent:
 
         while not self.stop_flag:
             ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z, distance, done = self.get_state()
-            state = np.array([ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z], dtype=np.float32)
+            state = np.array([ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z, distance], dtype=np.float32)
 
             reward = 0.0
             if prev_state is not None:
@@ -127,6 +131,9 @@ class DQNAgent:
                     to_center /= norm_center
                     accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
                     reward = float(np.dot(accel_vec, to_center)) * 1000.0
+
+            if done:
+                reward -= 1000.0
                 
             print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
             self.logger.info(
@@ -163,7 +170,9 @@ class DQNAgent:
                 action = random.choice(list(range(5)))
             else:
                 with torch.no_grad():
+                    q_network.eval()
                     q_values = q_network(state_tensor)
+                    q_network.train()
                     action = int(torch.argmax(q_values).item())
                     qmax_list.append(torch.max(q_values).item())
 
