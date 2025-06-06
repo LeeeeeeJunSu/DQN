@@ -20,7 +20,8 @@ os.makedirs(log_dir, exist_ok=True)
 class Network(nn.Module):
     def __init__(self):
         super(Network, self).__init__()
-        self.fc1 = nn.Linear(8, 128)
+        # 입력 차원을 다른 에이전트의 위치까지 포함하도록 확장
+        self.fc1 = nn.Linear(15, 128)
         self.fc2 = nn.Linear(128, 128)
         self.fc3 = nn.Linear(128, 128)
         self.fc4 = nn.Linear(128, 5)
@@ -82,8 +83,13 @@ class DQNAgent:
         if self.internal_thread.is_alive():
             self.internal_thread.join()
 
-    def get_action(self, ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, agent_z, agent_distance_to_ball, episode_done):
-        self.input_queue.append((ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, agent_z, agent_distance_to_ball, episode_done))
+    def get_action(self, ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z,
+                   agent_z, other_agents_z, agent_distance_to_ball, episode_done):
+        """상태 정보를 큐에 전달하여 행동을 요청한다."""
+        self.input_queue.append(
+            (ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z,
+             agent_z, other_agents_z, agent_distance_to_ball, episode_done)
+        )
         while len(self.output_queue) < 1:
             time.sleep(0.001)
         return self.output_queue.pop(0) 
@@ -118,8 +124,11 @@ class DQNAgent:
         qmax_list = []
 
         while not self.stop_flag:
-            ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z, distance, done = self.get_state()
-            state = np.array([ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z, distance], dtype=np.float32)
+            ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z, other_z, distance, done = self.get_state()
+            state_vals = [ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z]
+            state_vals.extend(list(other_z))
+            state_vals.append(distance)
+            state = np.array(state_vals, dtype=np.float32)
 
             reward = 0.0
             if prev_state is not None:
@@ -132,8 +141,7 @@ class DQNAgent:
                     accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
                     reward = float(np.dot(accel_vec, to_center)) * 1000.0
 
-            if done:
-                reward -= 1000.0
+
                 
             print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
             self.logger.info(

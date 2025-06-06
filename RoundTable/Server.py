@@ -41,7 +41,14 @@ if __name__ == '__main__':
                         # Get actions from agents
                         action_list = []
                         for i in range(agent_count):
-                            action = agent_list[i].get_action(ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, agent_z_list[i], agent_distance_to_ball_list[i], data_dict['IsDone'])
+                            other_z = agent_z_list[:i] + agent_z_list[i+1:]
+                            action = agent_list[i].get_action(
+                                ball_x, ball_y, ball_z,
+                                ball_speed_x, ball_speed_y, ball_speed_z,
+                                agent_z_list[i], other_z,
+                                agent_distance_to_ball_list[i],
+                                data_dict['IsDone']
+                            )
                             action_list.append(action)
                         # Send Response
                         response = json.dumps(action_list)
