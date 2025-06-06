@@ -33,6 +33,13 @@ for i in range(agent_count):
     robot_gripper_list.append(supervisor.getFromDef(f"ROBOT_GRIPPER_{i:02}"))
     robot_body_list.append(supervisor.getFromDef(f"ROBOT{i:02}"))
 
+# 공 초기 위치 및 속도 랜덤 설정
+radius = random.uniform(0, 0.4)
+pos_angle = random.uniform(0, 2 * math.pi)
+ball_x = radius * math.cos(pos_angle)
+ball_y = radius * math.sin(pos_angle)
+ball.getField("translation").setSFVec3f([ball_x, ball_y, ball.getField("translation").getSFVec3f()[2]])
+
 # 공 초기 속도 랜덤 설정
 speed = 0.5
 angle = random.uniform(0, 2 * math.pi)
