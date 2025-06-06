@@ -20,7 +20,8 @@ os.makedirs(log_dir, exist_ok=True)
 class Network(nn.Module):
     def __init__(self):
         super(Network, self).__init__()
-        self.fc1 = nn.Linear(7, 128)
+        # 입력 차원을 공의 위치/속도와 모든 에이전트 위치 정보에 맞추어 수정
+        self.fc1 = nn.Linear(38, 128)
         self.fc2 = nn.Linear(128, 128)
         self.fc3 = nn.Linear(128, 128)
         self.fc4 = nn.Linear(128, 5)
@@ -54,6 +55,10 @@ class DQNAgent:
         os.makedirs(self.log_dir, exist_ok=True)
         self.summary_log_path = os.path.join(self.log_dir, "training_summary.txt")
 
+        if not os.path.exists(self.summary_log_path):
+            with open(self.summary_log_path, "w") as f:
+                f.write("episode,reward,avg_loss,avg_qmax,epsilon\n")
+
         # 에이전트별 로거 설정
         self.logger = logging.getLogger(agent_name)
         self.logger.setLevel(logging.INFO)
@@ -78,8 +83,13 @@ class DQNAgent:
         if self.internal_thread.is_alive():
             self.internal_thread.join()
 
-    def get_action(self, ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, agent_z, agent_distance_to_ball, episode_done):
-        self.input_queue.append((ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, agent_z, agent_distance_to_ball, episode_done))
+    def get_action(self, ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z,
+                   agent_positions, gripper_z_list, episode_done):
+        """상태 정보를 큐에 전달하여 행동을 요청한다."""
+        self.input_queue.append(
+            (ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z,
+             agent_positions, gripper_z_list, episode_done)
+        )
         while len(self.output_queue) < 1:
             time.sleep(0.001)
         return self.output_queue.pop(0) 
@@ -114,8 +124,11 @@ class DQNAgent:
         qmax_list = []
 
         while not self.stop_flag:
-            ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z, distance, done = self.get_state()
-            state = np.array([ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z], dtype=np.float32)
+            ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_positions, gripper_z_list, done = self.get_state()
+            state_vals = [ball_x, ball_y, ball_z, spd_x, spd_y, spd_z]
+            state_vals.extend(list(agent_positions))
+            state_vals.extend(list(gripper_z_list))
+            state = np.array(state_vals, dtype=np.float32)
 
             reward = 0.0
             if prev_state is not None:
@@ -127,6 +140,8 @@ class DQNAgent:
                     to_center /= norm_center
                     accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
                     reward = float(np.dot(accel_vec, to_center)) * 1000.0
+
+
                 
             print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
             self.logger.info(
@@ -163,7 +178,9 @@ class DQNAgent:
                 action = random.choice(list(range(5)))
             else:
                 with torch.no_grad():
+                    q_network.eval()
                     q_values = q_network(state_tensor)
+                    q_network.train()
                     action = int(torch.argmax(q_values).item())
                     qmax_list.append(torch.max(q_values).item())
 

@@ -33,15 +33,27 @@ if __name__ == '__main__':
                         ball_speed_x = data_dict['ball_speed_x']
                         ball_speed_y = data_dict['ball_speed_y']
                         ball_speed_z = data_dict['ball_speed_z']
-                        agent_z_list = []
-                        agent_distance_to_ball_list = []
+                        agent_pos_list = []
+                        agent_gripper_z_list = []
                         for i in range(agent_count):
-                            agent_z_list.append(data_dict["agent_z_" + str(i)])
-                            agent_distance_to_ball_list.append(data_dict["agent_distance_to_ball_" + str(i)])
+                            agent_pos_list.extend([
+                                data_dict[f"agent_pos_{i}_x"],
+                                data_dict[f"agent_pos_{i}_y"],
+                                data_dict[f"agent_pos_{i}_z"],
+                            ])
+                            agent_gripper_z_list.append(
+                                data_dict[f"agent_gripper_z_{i}"]
+                            )
                         # Get actions from agents
                         action_list = []
                         for i in range(agent_count):
-                            action = agent_list[i].get_action(ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, agent_z_list[i], agent_distance_to_ball_list[i], data_dict['IsDone'])
+                            action = agent_list[i].get_action(
+                                ball_x, ball_y, ball_z,
+                                ball_speed_x, ball_speed_y, ball_speed_z,
+                                agent_pos_list,
+                                agent_gripper_z_list,
+                                data_dict["IsDone"],
+                            )
                             action_list.append(action)
                         # Send Response
                         response = json.dumps(action_list)
