@@ -1,0 +1,7 @@
+Episode: 404
+Reward: -0.1089
+Epsilon: 0.0100
+Learn Count: 728
+Update Count: 72888
+Average Loss: 0.0000
+Average Max Q: -60.9823

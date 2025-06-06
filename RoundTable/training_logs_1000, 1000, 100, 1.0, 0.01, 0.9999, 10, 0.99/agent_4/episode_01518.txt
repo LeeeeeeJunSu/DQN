@@ -1,0 +1,7 @@
+Episode: 1518
+Reward: -3.3492
+Epsilon: 0.0100
+Learn Count: 2608
+Update Count: 260838
+Average Loss: 0.0000
+Average Max Q: 11.4328
