@@ -20,7 +20,7 @@ os.makedirs(log_dir, exist_ok=True)
 class Network(nn.Module):
     def __init__(self):
         super(Network, self).__init__()
-        self.fc1 = nn.Linear(7, 128)
+        self.fc1 = nn.Linear(8, 128)
         self.fc2 = nn.Linear(128, 128)
         self.fc3 = nn.Linear(128, 128)
         self.fc4 = nn.Linear(128, 5)
@@ -115,7 +115,11 @@ class DQNAgent:
 
         while not self.stop_flag:
             ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z, distance, done = self.get_state()
-            state = np.array([ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z], dtype=np.float32)
+            state = np.array([
+                ball_x, ball_y, ball_z,
+                spd_x, spd_y, spd_z,
+                agent_z, distance
+            ], dtype=np.float32)
 
             reward = 0.0
             if prev_state is not None:
