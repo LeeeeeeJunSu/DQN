@@ -1,0 +1,7 @@
+Episode: 222
+Reward: -391.3188
+Epsilon: 0.3270
+Learn Count: 524
+Update Count: 33540
+Average Loss: 2152.8238
+Average Max Q: 7.2926
