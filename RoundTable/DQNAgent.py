@@ -20,7 +20,6 @@ os.makedirs(log_dir, exist_ok=True)
 class Network(nn.Module):
     def __init__(self):
         super(Network, self).__init__()
-        # 입력 차원을 공의 위치/속도와 모든 에이전트 위치 정보에 맞추어 수정
         self.fc1 = nn.Linear(38, 128)
         self.fc2 = nn.Linear(128, 128)
         self.fc3 = nn.Linear(128, 128)
@@ -140,8 +139,6 @@ class DQNAgent:
                     to_center /= norm_center
                     accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
                     reward = float(np.dot(accel_vec, to_center)) * 1000.0
-
-
                 
             print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
             self.logger.info(
