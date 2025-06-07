@@ -10,7 +10,7 @@ from collections import deque
 import os
 
 # 속도 선택을 위한 행동 값 목록
-action_values = [1.0, -1.0]
+action_values = [1.0, 0.5, 0.0, -0.5, -1.0]
 
 # 모든 에이전트 로그의 기본 디렉터리
 log_dir = "training_logs"
@@ -19,9 +19,9 @@ os.makedirs(log_dir, exist_ok=True)
 class Network(nn.Module):
     def __init__(self):
         super(Network, self).__init__()
-        self.fc1 = nn.Linear(7, 128)
+        self.fc1 = nn.Linear(10, 128)
         self.fc2 = nn.Linear(128, 128)
-        self.fc3 = nn.Linear(128, 2)
+        self.fc3 = nn.Linear(128, len(action_values))
 
     def forward(self, x):
         x = F.relu(self.fc1(x))
@@ -87,13 +87,9 @@ class DQNAgent:
         self.learn_log.close()
         self.episode_log.close()
 
-    def get_action(self, ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z,
-                   agent_z_pos, episode_done):
+    def get_action(self, ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, gripper_z_list, episode_done):
         """상태 정보를 큐에 전달하여 행동을 요청한다."""
-        self.input_queue.append(
-            (ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z,
-             agent_z_pos, episode_done)
-        )
+        self.input_queue.append((ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, gripper_z_list, episode_done))
         while len(self.output_queue) < 1:
             time.sleep(0.001)
         return self.output_queue.pop(0) 
@@ -129,8 +125,9 @@ class DQNAgent:
         loss_list = []
 
         while not self.stop_flag:
-            ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z_pos, done = self.get_state()
-            state_vals = [ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_z_pos]
+            ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, gripper_z_list, done = self.get_state()
+            state_vals = [ball_x, ball_y, ball_z, spd_x, spd_y, spd_z]
+            state_vals.extend(list(gripper_z_list))
             state = np.array(state_vals, dtype=np.float32)
             # nan 값이 있는 경우 Action을 중단 후 계속 진행
             if np.isnan(state).any():
@@ -157,7 +154,7 @@ class DQNAgent:
 
             if state_mean is None:
                 if len(warmup_states) < self.warmup_count:
-                    action = random.choice(list(range(2)))
+                    action = random.choice(list(range(len(action_values))))
                     self.output_queue.append(action_values[action])
 
                     if prev_state is not None:
@@ -186,7 +183,7 @@ class DQNAgent:
                 qmax_value = torch.max(q_values).item()
 
             if random.random() < epsilon:
-                action = random.choice(list(range(2)))
+                action = random.choice(list(range(len(action_values))))
             else:
                 action = int(torch.argmax(q_values).item())
 

@@ -10,12 +10,12 @@ if __name__ == '__main__':
     agent_list = []
     for i in range(agent_count):
         agent = DQNAgent(
-            replay_buffer_size=1000,
-            warmup_count=100,
+            replay_buffer_size=10000,
+            warmup_count=1000,
             batch_size=64,
             eps_start=1.0,
             eps_end=0.01,
-            eps_decay=0.995,
+            eps_decay=0.999,
             network_update_freq=20,
             gamma=0.99,
             agent_name=f"agent_{i}",
@@ -45,20 +45,17 @@ if __name__ == '__main__':
                         ball_speed_x = data_dict['ball_speed_x']
                         ball_speed_y = data_dict['ball_speed_y']
                         ball_speed_z = data_dict['ball_speed_z']
+                        gripper_z_list = [data_dict.get(f'agent_gripper_z_{i}', 0.0) for i in range(agent_count)]
                         done = data_dict['IsDone']
+
+                        # Get actions from each agent
                         action_list = []
                         for i in range(agent_count):
-                            agent_z_pos = data_dict.get(f'agent_gripper_z_{i}', 0.0)
-                            action = agent_list[i].get_action(
-                                ball_x, ball_y, ball_z,
-                                ball_speed_x, ball_speed_y, ball_speed_z,
-                                agent_z_pos,
-                                done,
-                            )
-                            action_list.append(action)
+                            action_list.append(agent_list[i].get_action(ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, gripper_z_list, done))
+
                         # Send Response
+                        print(f"Sending actions: {action_list}")
                         response = json.dumps(action_list)
-                        conn.sendall(response.encode('utf-8'))
             except socket.timeout:
                 continue
 
