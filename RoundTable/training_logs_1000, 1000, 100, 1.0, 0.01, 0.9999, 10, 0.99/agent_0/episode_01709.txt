@@ -1,7 +1,0 @@
-Episode: 1709
-Reward: -486.7319
-Epsilon: 0.0100
-Learn Count: 2867
-Update Count: 286798
-Average Loss: 5164.6412
-Average Max Q: 109.2047

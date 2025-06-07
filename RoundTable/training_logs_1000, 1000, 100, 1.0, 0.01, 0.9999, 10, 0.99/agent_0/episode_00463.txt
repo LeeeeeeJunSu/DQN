@@ -1,7 +1,0 @@
-Episode: 463
-Reward: -232.1615
-Epsilon: 0.0100
-Learn Count: 819
-Update Count: 81971
-Average Loss: 0.7991
-Average Max Q: -10.5521

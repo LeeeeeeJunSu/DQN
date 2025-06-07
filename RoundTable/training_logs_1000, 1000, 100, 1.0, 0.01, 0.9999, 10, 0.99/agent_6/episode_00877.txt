@@ -1,7 +1,0 @@
-Episode: 877
-Reward: -642.2970
-Epsilon: 0.0100
-Learn Count: 1566
-Update Count: 156601
-Average Loss: 794.9805
-Average Max Q: 50.3661

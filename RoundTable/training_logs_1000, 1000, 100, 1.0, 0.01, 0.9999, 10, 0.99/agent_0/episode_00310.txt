@@ -1,7 +1,0 @@
-Episode: 310
-Reward: -824.2871
-Epsilon: 0.0100
-Learn Count: 529
-Update Count: 52980
-Average Loss: 43.6089
-Average Max Q: -29.6756

@@ -41,7 +41,7 @@ ball_y = radius * math.sin(pos_angle)
 ball.getField("translation").setSFVec3f([ball_x, ball_y, ball.getField("translation").getSFVec3f()[2]])
 
 # 공 초기 속도 랜덤 설정
-speed = 0.5
+speed = 0.2
 angle = random.uniform(0, 2 * math.pi)
 vx = speed * math.cos(angle)
 vy = speed * math.sin(angle)
@@ -61,7 +61,6 @@ while supervisor.step(timestep) != -1:
         pos = robot_body_list[i].getField("translation").getSFVec3f()
         data_dict[f'agent_pos_{i}_x'] = pos[0]
         data_dict[f'agent_pos_{i}_y'] = pos[1]
-        data_dict[f'agent_pos_{i}_z'] = pos[2]
         data_dict[f'agent_gripper_z_{i}'] = robot_gripper_list[i].getField("translation").getSFVec3f()[2]
     
     # Ball이 중심으로부터 0.8이상 떨어지면 종료

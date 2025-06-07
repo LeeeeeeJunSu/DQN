@@ -39,7 +39,6 @@ if __name__ == '__main__':
                             agent_pos_list.extend([
                                 data_dict[f"agent_pos_{i}_x"],
                                 data_dict[f"agent_pos_{i}_y"],
-                                data_dict[f"agent_pos_{i}_z"],
                             ])
                             agent_gripper_z_list.append(
                                 data_dict[f"agent_gripper_z_{i}"]
