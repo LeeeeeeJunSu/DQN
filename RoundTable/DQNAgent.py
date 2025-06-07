@@ -168,7 +168,7 @@ class DQNAgent:
                 warmup_np = np.array(warmup_states)
                 state_mean = warmup_np.mean(axis=0)
                 state_var = warmup_np.var(axis=0)
-                state_std = np.sqrt(state_var) + 1e-8
+                state_std = np.clip(np.sqrt(state_var), 1e-3, None)
                 print(f"Warmup complete.")
                 self.logger.info(
                     "Warmup complete: mean=%s std=%s", state_mean.tolist(),
@@ -200,7 +200,7 @@ class DQNAgent:
                 diff = state - state_mean
                 state_mean = (1 - self.norm_alpha) * state_mean + self.norm_alpha * state
                 state_var = (1 - self.norm_alpha) * state_var + self.norm_alpha * (diff ** 2)
-                state_std = np.sqrt(state_var) + 1e-8
+                state_std = np.clip(np.sqrt(state_var), 1e-3, None)
                 self.logger.info(
                     "norm_update step=%d mean0=%.4f std0=%.4f", update_count,
                     state_mean[0], state_std[0]

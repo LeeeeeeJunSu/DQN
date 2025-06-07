@@ -19,7 +19,7 @@ if __name__ == '__main__':
             20,
             0.99,
             agent_name=f"agent_{i}",
-            reward_scale=1000.0,
+            reward_scale=10.0,
             norm_alpha=0.01,
         )
         agent.start()
