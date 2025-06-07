@@ -33,7 +33,8 @@ class Network(nn.Module):
 
 class DQNAgent:
     def __init__(self, replay_buffer_size, warmup_count, batch_size, eps_start,
-                 eps_end, eps_decay, network_update_freq, gamma, agent_name="agent"):
+                 eps_end, eps_decay, network_update_freq, gamma, agent_name="agent",
+                 reward_scale=1.0, norm_alpha=0.01):
         self.replay_buffer_size = replay_buffer_size
         self.warmup_count = warmup_count
         self.batch_size = batch_size
@@ -42,6 +43,10 @@ class DQNAgent:
         self.eps_decay = eps_decay
         self.network_update_freq = network_update_freq
         self.gamma = gamma
+
+        # 보상 스케일 조정 및 상태 정규화 업데이트 비율
+        self.reward_scale = reward_scale
+        self.norm_alpha = norm_alpha
 
         # 에이전트 이름과 전용 로그 디렉터리 준비
         self.agent_name = agent_name
@@ -62,6 +67,10 @@ class DQNAgent:
         # 동일 이름의 핸들러 중복 추가 방지
         if not self.logger.handlers:
             self.logger.addHandler(handler)
+
+        self.logger.info(
+            f"Initialized agent with reward_scale={self.reward_scale}, "
+            f"norm_alpha={self.norm_alpha}")
 
         self.input_queue = []
         self.output_queue = []
@@ -103,6 +112,7 @@ class DQNAgent:
         replay_buffer = deque(maxlen=self.replay_buffer_size)
         warmup_states = []
         state_mean = None
+        state_var = None
         state_std = None
 
         epsilon = self.eps_start
@@ -133,11 +143,12 @@ class DQNAgent:
                 if norm_center > 0:
                     to_center /= norm_center
                     accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
-                    reward = float(np.dot(accel_vec, to_center)) * 1000.0
+                    reward = float(np.dot(accel_vec, to_center)) * self.reward_scale
 
             print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
             self.logger.info(
-                f"step={update_count}, reward={reward:.4f}, epsilon={epsilon:.4f}")
+                f"step={update_count}, reward={reward:.4f}, epsilon={epsilon:.4f}, "
+                f"reward_scale={self.reward_scale}")
 
             episode_reward += reward
 
@@ -156,9 +167,13 @@ class DQNAgent:
 
                 warmup_np = np.array(warmup_states)
                 state_mean = warmup_np.mean(axis=0)
-                state_std = warmup_np.std(axis=0) + 1e-8
+                state_var = warmup_np.var(axis=0)
+                state_std = np.sqrt(state_var) + 1e-8
                 print(f"Warmup complete.")
-                self.logger.info("Warmup complete")
+                self.logger.info(
+                    "Warmup complete: mean=%s std=%s", state_mean.tolist(),
+                    state_std.tolist()
+                )
 
             if prev_state is not None and prev_action is not None:
                 replay_buffer.append((prev_state, prev_action, reward, state, done))
@@ -180,6 +195,16 @@ class DQNAgent:
             prev_action = action
             self.output_queue.append(action_values[action])
             update_count += 1
+
+            if state_mean is not None:
+                diff = state - state_mean
+                state_mean = (1 - self.norm_alpha) * state_mean + self.norm_alpha * state
+                state_var = (1 - self.norm_alpha) * state_var + self.norm_alpha * (diff ** 2)
+                state_std = np.sqrt(state_var) + 1e-8
+                self.logger.info(
+                    "norm_update step=%d mean0=%.4f std0=%.4f", update_count,
+                    state_mean[0], state_std[0]
+                )
 
             if len(replay_buffer) >= self.batch_size and update_count % self.batch_size == 0:
                 batch = random.sample(replay_buffer, self.batch_size)
