@@ -10,7 +10,7 @@ supervisor = Supervisor()
 timestep = int(supervisor.getBasicTimeStep())
 
 # 사전정의
-agent_count = 8
+agent_count = 4
 reset_standard = 0.8
 
 # Supervisor <-> Robot 소켓 통신 열기 
