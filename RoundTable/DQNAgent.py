@@ -52,6 +52,10 @@ class DQNAgent:
         self.log_dir = os.path.join(log_dir, agent_name)
         os.makedirs(self.log_dir, exist_ok=True)
 
+        # 네트워크 스냅샷을 저장할 디렉터리 준비
+        self.snapshot_dir = os.path.join(self.log_dir, "network_snapshots")
+        os.makedirs(self.snapshot_dir, exist_ok=True)
+
         self.step_log_path = os.path.join(self.log_dir, "Step_Debug.txt")
         self.learn_log_path = os.path.join(self.log_dir, "Learn_Debug.txt")
         self.episode_log_path = os.path.join(self.log_dir, "Episode_Debug.txt")
@@ -232,6 +236,10 @@ class DQNAgent:
 
                 if learn_count % self.network_update_freq == 0:
                     target_network.load_state_dict(q_network.state_dict())
+                    # 타깃 네트워크를 갱신할 때마다 스냅샷을 저장
+                    snapshot_name = f"target_{learn_count}_{int(time.time()*1000)}.pt"
+                    snapshot_path = os.path.join(self.snapshot_dir, snapshot_name)
+                    torch.save(target_network.state_dict(), snapshot_path)
 
             if done:
                 epsilon = max(self.eps_end, epsilon * self.eps_decay)
