@@ -1,7 +1,7 @@
 Episode: 55
-Reward: 1.0434
+Reward: -10.3027
 Epsilon: 0.7553
-Learn Count: 82
-Update Count: 5267
+Learn Count: 110
+Update Count: 7083
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: -1.8980

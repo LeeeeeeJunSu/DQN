@@ -1,7 +1,7 @@
 Episode: 299
-Reward: -8.4313
+Reward: -5.7300
 Epsilon: 0.2223
-Learn Count: 350
-Update Count: 22431
+Learn Count: 533
+Update Count: 34151
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: -9.9175

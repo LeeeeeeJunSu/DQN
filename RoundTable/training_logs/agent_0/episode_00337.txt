@@ -1,7 +1,7 @@
 Episode: 337
-Reward: 0.0000
+Reward: -0.1028
 Epsilon: 0.1837
-Learn Count: 401
-Update Count: 25725
+Learn Count: 576
+Update Count: 36918
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: -37.9807

@@ -1,7 +1,7 @@
 Episode: 392
-Reward: -1201.8442
+Reward: -1264.3221
 Epsilon: 0.1395
-Learn Count: 474
-Update Count: 30385
-Average Loss: 91.3225
-Average Max Q: 14.2998
+Learn Count: 645
+Update Count: 41304
+Average Loss: 23.7434
+Average Max Q: -29.3149

@@ -1,7 +1,7 @@
 Episode: 228
-Reward: -1787.1978
+Reward: -141.8916
 Epsilon: 0.3173
-Learn Count: 269
-Update Count: 17271
-Average Loss: 54.7345
-Average Max Q: 0.2092
+Learn Count: 420
+Update Count: 26896
+Average Loss: 537.8926
+Average Max Q: -5.4430

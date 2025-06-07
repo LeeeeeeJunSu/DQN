@@ -1,7 +1,7 @@
 Episode: 350
-Reward: -18.0503
+Reward: -782.4755
 Epsilon: 0.1721
-Learn Count: 415
-Update Count: 26610
-Average Loss: 71.2951
-Average Max Q: 2.7567
+Learn Count: 603
+Update Count: 38593
+Average Loss: 13.1264
+Average Max Q: -7.9030

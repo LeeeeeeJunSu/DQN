@@ -1,7 +1,7 @@
 Episode: 352
-Reward: 311.8338
+Reward: -702.9372
 Epsilon: 0.1704
-Learn Count: 419
-Update Count: 26843
-Average Loss: 4934.3520
-Average Max Q: 0.8813
+Learn Count: 604
+Update Count: 38695
+Average Loss: 2772.5161
+Average Max Q: -8.3121

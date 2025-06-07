@@ -1,7 +1,7 @@
 Episode: 340
-Reward: 88.3044
+Reward: 474.8056
 Epsilon: 0.1810
-Learn Count: 406
-Update Count: 25996
-Average Loss: 97.7514
-Average Max Q: 3.8572
+Learn Count: 584
+Update Count: 37406
+Average Loss: 1118.0944
+Average Max Q: 0.0464

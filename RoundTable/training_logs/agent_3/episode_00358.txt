@@ -1,7 +1,7 @@
 Episode: 358
-Reward: 336.2091
+Reward: -33.3537
 Epsilon: 0.1654
-Learn Count: 429
-Update Count: 27519
-Average Loss: 59.8160
-Average Max Q: 0.3023
+Learn Count: 611
+Update Count: 39136
+Average Loss: 342.8835
+Average Max Q: -5.3495

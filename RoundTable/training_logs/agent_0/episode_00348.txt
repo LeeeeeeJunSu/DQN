@@ -1,7 +1,7 @@
 Episode: 348
-Reward: -856.2531
+Reward: 499.0359
 Epsilon: 0.1739
-Learn Count: 414
-Update Count: 26501
-Average Loss: 1259.9309
-Average Max Q: 16.4563
+Learn Count: 601
+Update Count: 38474
+Average Loss: 2104.7366
+Average Max Q: 0.2109

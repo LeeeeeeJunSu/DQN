@@ -1,7 +1,7 @@
 Episode: 382
-Reward: -231.4623
+Reward: -478.7777
 Epsilon: 0.1466
-Learn Count: 464
-Update Count: 29732
-Average Loss: 52.3764
-Average Max Q: 27.9955
+Learn Count: 634
+Update Count: 40636
+Average Loss: 31.7596
+Average Max Q: -4.5772

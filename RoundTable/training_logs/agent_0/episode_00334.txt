@@ -1,7 +1,7 @@
 Episode: 334
-Reward: -824.3554
+Reward: -1135.8718
 Epsilon: 0.1865
-Learn Count: 399
-Update Count: 25536
-Average Loss: 13507.4861
-Average Max Q: 11.5071
+Learn Count: 575
+Update Count: 36816
+Average Loss: 2848.2303
+Average Max Q: -16.7730

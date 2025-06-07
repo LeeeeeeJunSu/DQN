@@ -1,7 +1,7 @@
 Episode: 347
-Reward: -7.3706
+Reward: -3.1894
 Epsilon: 0.1748
-Learn Count: 411
-Update Count: 26367
-Average Loss: 0.0000
-Average Max Q: 0.0000
+Learn Count: 592
+Update Count: 37888
+Average Loss: 11.8454
+Average Max Q: -3.9635

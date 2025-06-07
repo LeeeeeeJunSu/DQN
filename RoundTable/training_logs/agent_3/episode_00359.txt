@@ -1,7 +1,7 @@
 Episode: 359
-Reward: -3.1029
+Reward: -4.2544
 Epsilon: 0.1646
-Learn Count: 430
-Update Count: 27520
-Average Loss: 74.1010
-Average Max Q: 3.9082
+Learn Count: 611
+Update Count: 39137
+Average Loss: 0.0000
+Average Max Q: -11.6259

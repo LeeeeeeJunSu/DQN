@@ -1,7 +1,7 @@
 Episode: 158
-Reward: -977.5977
+Reward: -186.2728
 Epsilon: 0.4507
-Learn Count: 195
-Update Count: 12488
-Average Loss: 43.1371
-Average Max Q: 0.0655
+Learn Count: 302
+Update Count: 19342
+Average Loss: 3.2128
+Average Max Q: -0.0836

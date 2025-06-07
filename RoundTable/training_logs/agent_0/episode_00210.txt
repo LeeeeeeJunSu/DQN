@@ -1,7 +1,7 @@
 Episode: 210
-Reward: -714.5852
+Reward: -251.4393
 Epsilon: 0.3473
-Learn Count: 250
-Update Count: 16044
-Average Loss: 3123.1039
-Average Max Q: 0.7668
+Learn Count: 384
+Update Count: 24632
+Average Loss: 11.3989
+Average Max Q: -7.7314

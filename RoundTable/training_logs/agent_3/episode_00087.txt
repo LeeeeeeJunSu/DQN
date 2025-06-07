@@ -1,7 +1,7 @@
 Episode: 87
-Reward: -8.0466
+Reward: -8.1976
 Epsilon: 0.6433
-Learn Count: 117
-Update Count: 7528
+Learn Count: 178
+Update Count: 11395
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: -1.8155

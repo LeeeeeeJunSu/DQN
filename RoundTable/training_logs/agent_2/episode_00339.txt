@@ -1,7 +1,7 @@
 Episode: 339
-Reward: -10.7196
+Reward: -2.7572
 Epsilon: 0.1819
-Learn Count: 404
-Update Count: 25862
+Learn Count: 579
+Update Count: 37079
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: -19.3016

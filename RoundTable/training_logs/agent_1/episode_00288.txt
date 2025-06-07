@@ -1,7 +1,7 @@
 Episode: 288
-Reward: -1116.1853
+Reward: -1040.8342
 Epsilon: 0.2349
-Learn Count: 340
-Update Count: 21786
-Average Loss: 12004.7633
-Average Max Q: 3.9057
+Learn Count: 521
+Update Count: 33378
+Average Loss: 478.8943
+Average Max Q: -0.6827

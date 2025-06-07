@@ -1,7 +1,7 @@
 Episode: 106
-Reward: -175.0416
+Reward: -433.9716
 Epsilon: 0.5849
-Learn Count: 141
-Update Count: 9052
-Average Loss: 5448.2776
-Average Max Q: 0.3723
+Learn Count: 211
+Update Count: 13529
+Average Loss: 47.9586
+Average Max Q: -0.9309

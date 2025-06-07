@@ -1,7 +1,7 @@
 Episode: 324
-Reward: 251.9407
+Reward: 107.7153
 Epsilon: 0.1961
-Learn Count: 385
-Update Count: 24673
-Average Loss: 14672.2109
-Average Max Q: 6.3019
+Learn Count: 565
+Update Count: 36190
+Average Loss: 971.6473
+Average Max Q: -18.7608

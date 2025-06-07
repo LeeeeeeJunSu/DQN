@@ -1,7 +1,7 @@
 Episode: 323
-Reward: -3.0069
+Reward: -5.8786
 Epsilon: 0.1971
-Learn Count: 383
-Update Count: 24552
+Learn Count: 563
+Update Count: 36033
 Average Loss: 0.0000
 Average Max Q: 0.0000

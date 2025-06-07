@@ -1,7 +1,7 @@
 Episode: 335
-Reward: -11.9398
+Reward: -6.0777
 Epsilon: 0.1856
-Learn Count: 399
-Update Count: 25537
+Learn Count: 575
+Update Count: 36817
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: -37.3402

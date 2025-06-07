@@ -1,7 +1,7 @@
 Episode: 3
-Reward: -4.9487
+Reward: -5.5709
 Epsilon: 0.9801
-Learn Count: 5
-Update Count: 381
+Learn Count: 4
+Update Count: 305
 Average Loss: 0.0000
 Average Max Q: 0.0000

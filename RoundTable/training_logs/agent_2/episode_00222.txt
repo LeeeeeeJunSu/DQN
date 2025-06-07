@@ -1,7 +1,7 @@
 Episode: 222
-Reward: -9.0820
+Reward: -143.9964
 Epsilon: 0.3270
-Learn Count: 263
-Update Count: 16873
-Average Loss: 7958.1311
-Average Max Q: 0.3728
+Learn Count: 409
+Update Count: 26220
+Average Loss: 76.9884
+Average Max Q: -3.9280

@@ -1,7 +1,7 @@
 Episode: 73
-Reward: -3.7861
+Reward: -9.7655
 Epsilon: 0.6901
-Learn Count: 103
-Update Count: 6599
+Learn Count: 149
+Update Count: 9545
 Average Loss: 0.0000
-Average Max Q: 0.0963
+Average Max Q: 0.0000

@@ -1,7 +1,7 @@
 Episode: 360
-Reward: 250.2008
+Reward: -139.6862
 Epsilon: 0.1637
-Learn Count: 431
-Update Count: 27644
-Average Loss: 3109.3096
-Average Max Q: 8.8851
+Learn Count: 613
+Update Count: 39252
+Average Loss: 27.4896
+Average Max Q: -8.3520

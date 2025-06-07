@@ -1,7 +1,7 @@
 Episode: 160
-Reward: -973.6818
+Reward: -131.9938
 Epsilon: 0.4462
-Learn Count: 197
-Update Count: 12662
-Average Loss: 119.3895
-Average Max Q: 1.2322
+Learn Count: 307
+Update Count: 19648
+Average Loss: 20.6756
+Average Max Q: 1.0087

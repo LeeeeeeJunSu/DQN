@@ -1,7 +1,7 @@
 Episode: 231
-Reward: -0.5428
+Reward: 0.3339
 Epsilon: 0.3126
-Learn Count: 272
-Update Count: 17418
+Learn Count: 425
+Update Count: 27202
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: -6.2319

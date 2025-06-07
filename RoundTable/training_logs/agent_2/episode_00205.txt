@@ -1,7 +1,7 @@
 Episode: 205
-Reward: -20.7470
+Reward: -11.1312
 Epsilon: 0.3561
-Learn Count: 244
-Update Count: 15624
+Learn Count: 376
+Update Count: 24114
 Average Loss: 0.0000
 Average Max Q: 0.0000

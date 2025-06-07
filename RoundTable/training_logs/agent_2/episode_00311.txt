@@ -1,7 +1,7 @@
 Episode: 311
-Reward: -6.6444
+Reward: -8.8977
 Epsilon: 0.2093
-Learn Count: 362
-Update Count: 23205
+Learn Count: 548
+Update Count: 35081
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: -21.9919

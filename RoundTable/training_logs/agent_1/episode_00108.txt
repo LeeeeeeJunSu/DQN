@@ -1,7 +1,7 @@
 Episode: 108
-Reward: -1303.2968
+Reward: -672.6582
 Epsilon: 0.5790
-Learn Count: 143
-Update Count: 9210
-Average Loss: 63.9153
-Average Max Q: 0.6540
+Learn Count: 214
+Update Count: 13742
+Average Loss: 8.8498
+Average Max Q: -0.2871

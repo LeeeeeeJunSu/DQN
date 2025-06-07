@@ -1,7 +1,7 @@
 Episode: 24
-Reward: -989.2902
+Reward: 275.1147
 Epsilon: 0.8822
 Learn Count: 43
-Update Count: 2812
-Average Loss: 111.9796
-Average Max Q: 0.1212
+Update Count: 2762
+Average Loss: 319.4784
+Average Max Q: -0.1660

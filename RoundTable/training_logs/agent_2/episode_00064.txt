@@ -1,7 +1,7 @@
 Episode: 64
-Reward: -751.4176
+Reward: -283.9132
 Epsilon: 0.7219
-Learn Count: 94
-Update Count: 6057
-Average Loss: 628.0224
-Average Max Q: 0.8583
+Learn Count: 133
+Update Count: 8561
+Average Loss: 283.2647
+Average Max Q: -1.6016

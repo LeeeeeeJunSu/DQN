@@ -1,7 +1,7 @@
 Episode: 234
-Reward: 24.6726
+Reward: 310.7249
 Epsilon: 0.3079
-Learn Count: 276
-Update Count: 17672
-Average Loss: 363.2055
-Average Max Q: 0.2490
+Learn Count: 434
+Update Count: 27792
+Average Loss: 1098.6208
+Average Max Q: -0.4384

@@ -1,7 +1,7 @@
 Episode: 56
-Reward: -728.7581
+Reward: -525.7371
 Epsilon: 0.7515
-Learn Count: 84
-Update Count: 5430
-Average Loss: 24.2604
-Average Max Q: 0.0144
+Learn Count: 113
+Update Count: 7278
+Average Loss: 366.0739
+Average Max Q: -2.3838
