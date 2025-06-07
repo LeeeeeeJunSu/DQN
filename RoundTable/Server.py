@@ -5,7 +5,7 @@ from DQNAgent import DQNAgent
 import threading
 
 if __name__ == '__main__':
-    agent_count = 8
+    agent_count = 4
 
     agent_list = []
     for i in range(agent_count):
