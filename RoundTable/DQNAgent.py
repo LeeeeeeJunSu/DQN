@@ -56,7 +56,7 @@ class DQNAgent:
 
         if not os.path.exists(self.summary_log_path):
             with open(self.summary_log_path, "w") as f:
-                f.write("episode,reward,avg_loss,avg_qmax,epsilon\n")
+                f.write("episode,avg_reward,avg_loss,avg_qmax,epsilon\n")
 
         # 에이전트별 로거 설정
         self.logger = logging.getLogger(agent_name)
@@ -123,6 +123,7 @@ class DQNAgent:
         prev_action = None
 
         episode_reward = 0
+        step_count = 0
         episode_index = 0
         loss_list = []
         qmax_list = []
@@ -151,6 +152,7 @@ class DQNAgent:
                 f"reward_scale={self.reward_scale}")
 
             episode_reward += reward
+            step_count += 1
 
             if state_mean is None:
                 if len(warmup_states) < self.warmup_count:
@@ -239,10 +241,11 @@ class DQNAgent:
                 epsilon = max(self.eps_end, epsilon * self.eps_decay)
                 avg_loss = np.mean(loss_list) if loss_list else 0.0
                 avg_qmax = np.mean(qmax_list) if qmax_list else 0.0
+                avg_reward = episode_reward / step_count if step_count else 0.0
                 log_path = os.path.join(self.log_dir, f"episode_{episode_index:05d}.txt")
                 with open(log_path, "w") as f:
                     f.write(f"Episode: {episode_index}\n")
-                    f.write(f"Reward: {episode_reward:.4f}\n")
+                    f.write(f"Average Reward: {avg_reward:.4f}\n")
                     f.write(f"Epsilon: {epsilon:.4f}\n")
                     f.write(f"Learn Count: {learn_count}\n")
                     f.write(f"Update Count: {update_count}\n")
@@ -250,12 +253,13 @@ class DQNAgent:
                     f.write(f"Average Max Q: {avg_qmax:.4f}\n")
 
                 with open(self.summary_log_path, "a") as f:
-                    f.write(f"{episode_index},{episode_reward:.4f},{avg_loss:.4f},{avg_qmax:.4f},{epsilon:.4f}\n")
+                    f.write(f"{episode_index},{avg_reward:.4f},{avg_loss:.4f},{avg_qmax:.4f},{epsilon:.4f}\n")
 
                 self.logger.info(
-                    f"episode_end index={episode_index} reward={episode_reward:.4f} epsilon={epsilon:.4f}")
+                    f"episode_end index={episode_index} reward={avg_reward:.4f} epsilon={epsilon:.4f}")
 
                 episode_index += 1
                 episode_reward = 0
+                step_count = 0
                 loss_list.clear()
                 qmax_list.clear()
