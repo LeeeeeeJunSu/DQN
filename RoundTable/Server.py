@@ -45,25 +45,15 @@ if __name__ == '__main__':
                         ball_speed_x = data_dict['ball_speed_x']
                         ball_speed_y = data_dict['ball_speed_y']
                         ball_speed_z = data_dict['ball_speed_z']
-                        agent_pos_list = []
-                        agent_gripper_z_list = []
-                        for i in range(agent_count):
-                            agent_pos_list.extend([
-                                data_dict[f"agent_pos_{i}_x"],
-                                data_dict[f"agent_pos_{i}_y"],
-                            ])
-                            agent_gripper_z_list.append(
-                                data_dict[f"agent_gripper_z_{i}"]
-                            )
-                        # Get actions from agents
+                        done = data_dict['IsDone']
                         action_list = []
                         for i in range(agent_count):
+                            agent_z_pos = data_dict.get(f'agent_gripper_z_{i}', 0.0)
                             action = agent_list[i].get_action(
                                 ball_x, ball_y, ball_z,
                                 ball_speed_x, ball_speed_y, ball_speed_z,
-                                agent_pos_list,
-                                agent_gripper_z_list,
-                                data_dict["IsDone"],
+                                agent_z_pos,
+                                done,
                             )
                             action_list.append(action)
                         # Send Response
