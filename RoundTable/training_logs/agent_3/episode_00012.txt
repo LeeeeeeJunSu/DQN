@@ -1,7 +1,7 @@
 Episode: 12
-Reward: -490.3843
+Reward: -1331.7606
 Epsilon: 0.9369
-Learn Count: 17
-Update Count: 1089
-Average Loss: 43.8592
-Average Max Q: -0.0482
+Learn Count: 26
+Update Count: 1705
+Average Loss: 1566.6820
+Average Max Q: 0.0199

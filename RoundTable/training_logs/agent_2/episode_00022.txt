@@ -1,7 +1,7 @@
 Episode: 22
-Reward: -872.2964
+Reward: -964.5115
 Epsilon: 0.8911
-Learn Count: 38
-Update Count: 2444
-Average Loss: 119.4667
-Average Max Q: 0.3507
+Learn Count: 40
+Update Count: 2617
+Average Loss: 47.3227
+Average Max Q: 0.0270

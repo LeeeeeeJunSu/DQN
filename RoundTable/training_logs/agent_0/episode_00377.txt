@@ -1,7 +1,7 @@
 Episode: 377
-Reward: -11.9279
+Reward: -4.2549
 Epsilon: 0.1504
-Learn Count: 536
-Update Count: 34365
+Learn Count: 458
+Update Count: 29326
 Average Loss: 0.0000
-Average Max Q: -10.2171
+Average Max Q: 0.0000

@@ -1,7 +1,7 @@
 Episode: 48
-Reward: 38.8754
+Reward: -676.5781
 Epsilon: 0.7822
-Learn Count: 79
-Update Count: 5081
-Average Loss: 34.0435
-Average Max Q: -0.0355
+Learn Count: 74
+Update Count: 4766
+Average Loss: 2000.3419
+Average Max Q: 1.5302

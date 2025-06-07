@@ -1,7 +1,7 @@
 Episode: 240
-Reward: -1068.0581
+Reward: -382.1091
 Epsilon: 0.2988
-Learn Count: 353
-Update Count: 22649
-Average Loss: 68.1609
-Average Max Q: -9.7520
+Learn Count: 283
+Update Count: 18148
+Average Loss: 3600.2243
+Average Max Q: 3.4994

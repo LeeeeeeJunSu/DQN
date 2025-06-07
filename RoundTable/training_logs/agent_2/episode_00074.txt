@@ -1,7 +1,7 @@
 Episode: 74
-Reward: -579.7920
+Reward: 114.0942
 Epsilon: 0.6866
-Learn Count: 127
-Update Count: 8144
-Average Loss: 477.3951
-Average Max Q: -5.9469
+Learn Count: 105
+Update Count: 6752
+Average Loss: 17.3377
+Average Max Q: 0.1808

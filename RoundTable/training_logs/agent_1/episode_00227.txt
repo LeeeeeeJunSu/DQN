@@ -1,7 +1,7 @@
 Episode: 227
-Reward: -6.0687
+Reward: 0.0000
 Epsilon: 0.3189
-Learn Count: 336
-Update Count: 21550
+Learn Count: 268
+Update Count: 17160
 Average Loss: 0.0000
 Average Max Q: 0.0000

@@ -1,7 +1,7 @@
 Episode: 272
-Reward: 221.1563
+Reward: -129.9009
 Epsilon: 0.2545
-Learn Count: 399
-Update Count: 25555
-Average Loss: 5068.8984
-Average Max Q: -6.8183
+Learn Count: 323
+Update Count: 20719
+Average Loss: 69.2792
+Average Max Q: 3.4296

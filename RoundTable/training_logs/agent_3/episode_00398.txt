@@ -1,7 +1,7 @@
 Episode: 398
-Reward: -687.7453
+Reward: 564.6245
 Epsilon: 0.1353
-Learn Count: 557
-Update Count: 35651
-Average Loss: 58.4775
-Average Max Q: -16.8069
+Learn Count: 482
+Update Count: 30891
+Average Loss: 2395.3649
+Average Max Q: 5.8732

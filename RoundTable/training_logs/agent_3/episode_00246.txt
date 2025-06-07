@@ -1,7 +1,7 @@
 Episode: 246
-Reward: 751.5398
+Reward: -865.3900
 Epsilon: 0.2899
-Learn Count: 363
-Update Count: 23271
-Average Loss: 2645.9597
-Average Max Q: -5.6530
+Learn Count: 290
+Update Count: 18601
+Average Loss: 1409.0131
+Average Max Q: 3.3970

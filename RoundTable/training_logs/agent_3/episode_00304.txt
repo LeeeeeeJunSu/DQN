@@ -1,7 +1,7 @@
 Episode: 304
-Reward: 57.4644
+Reward: -838.0778
 Epsilon: 0.2168
-Learn Count: 436
-Update Count: 27909
-Average Loss: 63.2039
-Average Max Q: -4.0510
+Learn Count: 356
+Update Count: 22828
+Average Loss: 87.8355
+Average Max Q: 4.6545

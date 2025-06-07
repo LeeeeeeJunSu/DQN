@@ -1,7 +1,7 @@
 Episode: 98
-Reward: -470.9917
+Reward: -869.4955
 Epsilon: 0.6088
-Learn Count: 170
-Update Count: 10900
-Average Loss: 572.8686
-Average Max Q: -6.3613
+Learn Count: 132
+Update Count: 8463
+Average Loss: 5975.5780
+Average Max Q: 0.2976

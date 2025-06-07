@@ -1,7 +1,7 @@
 Episode: 20
-Reward: -218.6177
+Reward: 3.0037
 Epsilon: 0.9001
-Learn Count: 35
-Update Count: 2296
-Average Loss: 1952.4799
-Average Max Q: -0.6382
+Learn Count: 37
+Update Count: 2402
+Average Loss: 11.0433
+Average Max Q: 0.0346

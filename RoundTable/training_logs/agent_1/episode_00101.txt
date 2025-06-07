@@ -1,7 +1,7 @@
 Episode: 101
-Reward: -7.8741
+Reward: 0.0000
 Epsilon: 0.5997
-Learn Count: 173
-Update Count: 11072
-Average Loss: 12.1067
-Average Max Q: -2.4870
+Learn Count: 135
+Update Count: 8644
+Average Loss: 0.0000
+Average Max Q: 0.0000

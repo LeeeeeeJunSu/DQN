@@ -1,7 +1,7 @@
 Episode: 263
-Reward: -1.1362
+Reward: -11.1116
 Epsilon: 0.2663
-Learn Count: 382
-Update Count: 24478
+Learn Count: 307
+Update Count: 19706
 Average Loss: 0.0000
-Average Max Q: 0.6601
+Average Max Q: 0.0000

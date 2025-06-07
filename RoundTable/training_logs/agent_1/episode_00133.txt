@@ -1,7 +1,7 @@
 Episode: 133
-Reward: -9.5396
+Reward: 0.0000
 Epsilon: 0.5108
-Learn Count: 218
-Update Count: 13980
+Learn Count: 168
+Update Count: 10795
 Average Loss: 0.0000
 Average Max Q: 0.0000

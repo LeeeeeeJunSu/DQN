@@ -1,7 +1,7 @@
 Episode: 333
-Reward: -7.9596
+Reward: -10.9664
 Epsilon: 0.1875
-Learn Count: 481
-Update Count: 30801
+Learn Count: 396
+Update Count: 25388
 Average Loss: 0.0000
-Average Max Q: -10.7360
+Average Max Q: 0.0000

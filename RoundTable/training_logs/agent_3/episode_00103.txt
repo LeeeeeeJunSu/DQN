@@ -1,7 +1,7 @@
 Episode: 103
-Reward: -10.4196
+Reward: 0.0000
 Epsilon: 0.5937
-Learn Count: 176
-Update Count: 11282
+Learn Count: 137
+Update Count: 8779
 Average Loss: 0.0000
 Average Max Q: 0.0000

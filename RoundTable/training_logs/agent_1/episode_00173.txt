@@ -1,7 +1,7 @@
 Episode: 173
-Reward: -12.7272
+Reward: -2.8450
 Epsilon: 0.4180
-Learn Count: 260
-Update Count: 16701
+Learn Count: 211
+Update Count: 13533
 Average Loss: 0.0000
 Average Max Q: 0.0000

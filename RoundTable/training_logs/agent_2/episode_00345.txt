@@ -1,7 +1,7 @@
 Episode: 345
-Reward: 0.0000
+Reward: -7.4977
 Epsilon: 0.1765
-Learn Count: 498
-Update Count: 31934
+Learn Count: 410
+Update Count: 26241
 Average Loss: 0.0000
 Average Max Q: 0.0000

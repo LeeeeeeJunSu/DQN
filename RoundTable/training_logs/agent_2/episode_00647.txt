@@ -1,7 +1,0 @@
-Episode: 647
-Reward: -5.4491
-Epsilon: 0.0388
-Learn Count: 819
-Update Count: 52432
-Average Loss: 0.0000
-Average Max Q: 0.0000

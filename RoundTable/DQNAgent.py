@@ -22,18 +22,13 @@ class Network(nn.Module):
         super(Network, self).__init__()
         self.fc1 = nn.Linear(18, 128)
         self.fc2 = nn.Linear(128, 128)
-        self.fc3 = nn.Linear(128, 128)
-        self.fc4 = nn.Linear(128, 5)
-        self.dropout = nn.Dropout(p=0.2)
+        self.fc3 = nn.Linear(128, 5)
 
     def forward(self, x):
         x = F.relu(self.fc1(x))
-        x = self.dropout(x)
         x = F.relu(self.fc2(x))
-        x = self.dropout(x)
         x = F.relu(self.fc3(x))
-        x = self.dropout(x)
-        return self.fc4(x)
+        return x
 
 
 class DQNAgent:
@@ -139,7 +134,7 @@ class DQNAgent:
                     to_center /= norm_center
                     accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
                     reward = float(np.dot(accel_vec, to_center)) * 1000.0
-                
+
             print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
             self.logger.info(
                 f"step={update_count}, reward={reward:.4f}, epsilon={epsilon:.4f}")

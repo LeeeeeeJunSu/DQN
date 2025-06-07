@@ -1,7 +1,7 @@
 Episode: 369
-Reward: -10.5744
+Reward: -5.9712
 Epsilon: 0.1565
-Learn Count: 530
-Update Count: 33935
+Learn Count: 444
+Update Count: 28453
 Average Loss: 0.0000
-Average Max Q: -12.7737
+Average Max Q: 0.0000

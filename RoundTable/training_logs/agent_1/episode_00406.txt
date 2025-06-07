@@ -1,7 +1,7 @@
 Episode: 406
-Reward: -906.7546
+Reward: -544.0662
 Epsilon: 0.1300
-Learn Count: 564
-Update Count: 36150
-Average Loss: 2404.5699
-Average Max Q: -4.9706
+Learn Count: 492
+Update Count: 31538
+Average Loss: 95.1289
+Average Max Q: 8.2245

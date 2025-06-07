@@ -1,7 +1,7 @@
 Episode: 384
-Reward: -1299.3231
+Reward: -1352.5620
 Epsilon: 0.1452
-Learn Count: 544
-Update Count: 34851
-Average Loss: 22.3977
-Average Max Q: -5.1044
+Learn Count: 466
+Update Count: 29841
+Average Loss: 50.7815
+Average Max Q: 5.1987

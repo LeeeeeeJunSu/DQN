@@ -1,7 +1,7 @@
 Episode: 296
-Reward: -377.0887
+Reward: -1058.7897
 Epsilon: 0.2257
-Learn Count: 425
-Update Count: 27223
-Average Loss: 5323.4727
-Average Max Q: -7.0485
+Learn Count: 348
+Update Count: 22306
+Average Loss: 2998.8314
+Average Max Q: 4.9217

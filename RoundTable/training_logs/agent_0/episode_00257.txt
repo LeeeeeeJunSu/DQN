@@ -1,7 +1,7 @@
 Episode: 257
-Reward: -7.8252
+Reward: -3.7213
 Epsilon: 0.2744
-Learn Count: 375
-Update Count: 24006
+Learn Count: 301
+Update Count: 19324
 Average Loss: 0.0000
-Average Max Q: -3.8885
+Average Max Q: 0.0000

@@ -1,7 +1,7 @@
 Episode: 366
-Reward: 288.9990
+Reward: -256.4138
 Epsilon: 0.1589
-Learn Count: 528
-Update Count: 33833
-Average Loss: 3166.9327
-Average Max Q: -4.0130
+Learn Count: 442
+Update Count: 28315
+Average Loss: 62.6384
+Average Max Q: 9.9164

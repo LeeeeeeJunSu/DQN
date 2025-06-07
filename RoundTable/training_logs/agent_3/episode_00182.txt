@@ -1,7 +1,7 @@
 Episode: 182
-Reward: -812.6774
+Reward: -1537.3559
 Epsilon: 0.3996
-Learn Count: 271
-Update Count: 17377
-Average Loss: 65.4060
-Average Max Q: -19.5714
+Learn Count: 221
+Update Count: 14188
+Average Loss: 91.7010
+Average Max Q: 0.7058

@@ -1,7 +1,7 @@
 Episode: 34
-Reward: -538.0359
+Reward: -1147.2916
 Epsilon: 0.8391
-Learn Count: 58
-Update Count: 3717
-Average Loss: 7.4098
-Average Max Q: -1.8852
+Learn Count: 57
+Update Count: 3680
+Average Loss: 1174.7457
+Average Max Q: 0.0000

@@ -1,7 +1,7 @@
 Episode: 146
-Reward: -1048.0008
+Reward: -1129.9154
 Epsilon: 0.4786
-Learn Count: 234
-Update Count: 15037
-Average Loss: 1652.6068
-Average Max Q: -2.2803
+Learn Count: 182
+Update Count: 11692
+Average Loss: 2031.9390
+Average Max Q: 0.2514

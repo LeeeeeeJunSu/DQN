@@ -1,7 +1,7 @@
 Episode: 284
-Reward: 224.0309
+Reward: -1251.7278
 Epsilon: 0.2397
-Learn Count: 410
-Update Count: 26294
-Average Loss: 2265.4151
-Average Max Q: -5.1005
+Learn Count: 335
+Update Count: 21497
+Average Loss: 3065.5433
+Average Max Q: 3.7447

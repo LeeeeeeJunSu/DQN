@@ -1,7 +1,7 @@
 Episode: 30
-Reward: -610.7570
+Reward: -257.3839
 Epsilon: 0.8561
 Learn Count: 52
-Update Count: 3368
-Average Loss: 1414.1566
-Average Max Q: -1.0643
+Update Count: 3382
+Average Loss: 15.4939
+Average Max Q: 0.0000

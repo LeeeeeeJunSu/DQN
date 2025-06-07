@@ -1,7 +1,7 @@
 Episode: 264
-Reward: -728.7571
+Reward: -287.6741
 Epsilon: 0.2649
-Learn Count: 384
-Update Count: 24637
-Average Loss: 54.8005
-Average Max Q: -1.7689
+Learn Count: 310
+Update Count: 19848
+Average Loss: 4793.6463
+Average Max Q: 1.0763

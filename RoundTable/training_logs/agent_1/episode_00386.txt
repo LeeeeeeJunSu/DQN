@@ -1,7 +1,7 @@
 Episode: 386
-Reward: -68.2153
+Reward: -867.9128
 Epsilon: 0.1437
-Learn Count: 546
-Update Count: 34951
-Average Loss: 36.6222
-Average Max Q: -7.2412
+Learn Count: 468
+Update Count: 29969
+Average Loss: 69.3475
+Average Max Q: 7.6861

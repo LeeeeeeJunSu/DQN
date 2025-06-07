@@ -8,10 +8,11 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Grass.proto"
 
 WorldInfo {
+  basicTimeStep 16
 }
 Viewpoint {
-  orientation 0 0 1 1.5707963267948966
-  position 0 -8.702612217058634 0.31
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 0 0 9.012612217058635
 }
 TexturedBackground {
 }
@@ -44,7 +45,6 @@ DEF BALL Solid {
     density -1
     mass 1
   }
-  linearVelocity -0.09839156094256903 -0.17412380863995805 0
 }
 DEF SUPERVISOR Robot {
   controller "SUPERVISOR"

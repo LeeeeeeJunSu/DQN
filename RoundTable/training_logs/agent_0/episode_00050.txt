@@ -1,7 +1,7 @@
 Episode: 50
-Reward: -803.8030
+Reward: -1037.4055
 Epsilon: 0.7744
-Learn Count: 81
-Update Count: 5221
-Average Loss: 4560.5483
-Average Max Q: -2.8276
+Learn Count: 76
+Update Count: 4897
+Average Loss: 40.4827
+Average Max Q: 0.0197

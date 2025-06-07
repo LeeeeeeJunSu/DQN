@@ -1,7 +1,7 @@
 Episode: 127
-Reward: -6.4686
+Reward: -4.0236
 Epsilon: 0.5264
-Learn Count: 208
-Update Count: 13325
+Learn Count: 162
+Update Count: 10395
 Average Loss: 0.0000
-Average Max Q: -2.6873
+Average Max Q: 0.0000

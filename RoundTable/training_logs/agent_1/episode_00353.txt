@@ -1,7 +1,7 @@
 Episode: 353
-Reward: -5.2163
+Reward: 0.0492
 Epsilon: 0.1696
-Learn Count: 512
-Update Count: 32797
+Learn Count: 419
+Update Count: 26844
 Average Loss: 0.0000
-Average Max Q: -6.3585
+Average Max Q: 0.0000

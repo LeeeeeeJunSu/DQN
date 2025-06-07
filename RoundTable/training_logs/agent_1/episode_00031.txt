@@ -1,7 +1,7 @@
 Episode: 31
-Reward: -4.0939
+Reward: -7.4508
 Epsilon: 0.8518
 Learn Count: 52
-Update Count: 3369
+Update Count: 3383
 Average Loss: 0.0000
 Average Max Q: 0.0000

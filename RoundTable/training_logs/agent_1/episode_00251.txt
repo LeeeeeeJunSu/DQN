@@ -1,7 +1,7 @@
 Episode: 251
-Reward: -10.4685
+Reward: -6.9547
 Epsilon: 0.2828
-Learn Count: 369
-Update Count: 23626
+Learn Count: 295
+Update Count: 18884
 Average Loss: 0.0000
-Average Max Q: -8.8098
+Average Max Q: 0.0000

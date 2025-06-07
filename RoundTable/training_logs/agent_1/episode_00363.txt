@@ -1,7 +1,7 @@
 Episode: 363
-Reward: -14.8936
+Reward: -6.4695
 Epsilon: 0.1613
-Learn Count: 524
-Update Count: 33540
+Learn Count: 433
+Update Count: 27763
 Average Loss: 0.0000
-Average Max Q: -14.0278
+Average Max Q: 0.0000

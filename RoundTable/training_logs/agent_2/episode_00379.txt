@@ -1,7 +1,7 @@
 Episode: 379
-Reward: -10.3438
+Reward: -10.0658
 Epsilon: 0.1489
-Learn Count: 539
-Update Count: 34511
+Learn Count: 460
+Update Count: 29457
 Average Loss: 0.0000
-Average Max Q: -32.7854
+Average Max Q: 0.0000

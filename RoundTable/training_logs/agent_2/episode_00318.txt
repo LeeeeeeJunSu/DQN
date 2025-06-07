@@ -1,7 +1,7 @@
 Episode: 318
-Reward: -176.0609
+Reward: -125.0048
 Epsilon: 0.2021
-Learn Count: 465
-Update Count: 29765
-Average Loss: 64.0313
-Average Max Q: -6.8089
+Learn Count: 370
+Update Count: 23706
+Average Loss: 104.5059
+Average Max Q: 0.7566

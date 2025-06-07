@@ -1,7 +1,7 @@
 Episode: 342
-Reward: -178.4822
+Reward: -801.1189
 Epsilon: 0.1792
-Learn Count: 496
-Update Count: 31757
-Average Loss: 523.6756
-Average Max Q: -10.4479
+Learn Count: 408
+Update Count: 26138
+Average Loss: 3802.0087
+Average Max Q: 12.1468

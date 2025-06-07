@@ -1,7 +1,7 @@
 Episode: 322
-Reward: -571.8034
+Reward: -462.1126
 Epsilon: 0.1981
-Learn Count: 470
-Update Count: 30101
-Average Loss: 32.2887
-Average Max Q: -1.2863
+Learn Count: 383
+Update Count: 24551
+Average Loss: 10421.9033
+Average Max Q: 7.7335

@@ -1,7 +1,7 @@
 Episode: 374
-Reward: -162.3574
+Reward: 170.4461
 Epsilon: 0.1526
-Learn Count: 534
-Update Count: 34233
-Average Loss: 38.6852
-Average Max Q: -5.7346
+Learn Count: 454
+Update Count: 29092
+Average Loss: 5276.7064
+Average Max Q: 17.2878

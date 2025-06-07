@@ -1,7 +1,7 @@
 Episode: 279
-Reward: -4.0241
+Reward: -9.9367
 Epsilon: 0.2457
-Learn Count: 405
-Update Count: 25931
+Learn Count: 329
+Update Count: 21079
 Average Loss: 0.0000
 Average Max Q: 0.0000

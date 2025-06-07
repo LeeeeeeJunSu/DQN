@@ -1,7 +1,7 @@
 Episode: 19
-Reward: 0.4853
+Reward: -12.2487
 Epsilon: 0.9046
-Learn Count: 30
-Update Count: 1947
+Learn Count: 35
+Update Count: 2260
 Average Loss: 0.0000
 Average Max Q: 0.0000

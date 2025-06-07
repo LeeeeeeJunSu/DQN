@@ -1,7 +1,7 @@
 Episode: 198
-Reward: 129.7811
+Reward: -828.0602
 Epsilon: 0.3688
-Learn Count: 286
-Update Count: 18316
-Average Loss: 10251.7372
-Average Max Q: -8.5413
+Learn Count: 237
+Update Count: 15230
+Average Loss: 12458.6787
+Average Max Q: 0.0719

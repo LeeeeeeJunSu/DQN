@@ -1,7 +1,7 @@
 Episode: 226
-Reward: -315.7974
+Reward: 422.8696
 Epsilon: 0.3205
-Learn Count: 336
-Update Count: 21549
-Average Loss: 105.5554
-Average Max Q: -1.3995
+Learn Count: 268
+Update Count: 17159
+Average Loss: 6336.3789
+Average Max Q: 0.7219

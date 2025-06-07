@@ -1,7 +1,7 @@
 Episode: 298
-Reward: 29.3599
+Reward: -285.2557
 Epsilon: 0.2234
-Learn Count: 427
-Update Count: 27360
-Average Loss: 3367.4876
-Average Max Q: -7.1307
+Learn Count: 350
+Update Count: 22430
+Average Loss: 68.5851
+Average Max Q: 3.4695

@@ -1,7 +1,7 @@
 Episode: 156
-Reward: -133.2603
+Reward: -708.2866
 Epsilon: 0.4552
-Learn Count: 244
-Update Count: 15652
-Average Loss: 37.0449
-Average Max Q: -6.4349
+Learn Count: 193
+Update Count: 12365
+Average Loss: 59.3273
+Average Max Q: 0.7641

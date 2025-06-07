@@ -1,7 +1,7 @@
 Episode: 232
-Reward: -564.4362
+Reward: -822.5168
 Epsilon: 0.3110
-Learn Count: 345
-Update Count: 22081
-Average Loss: 2342.7109
-Average Max Q: -2.4893
+Learn Count: 274
+Update Count: 17547
+Average Loss: 60.5412
+Average Max Q: 1.4593

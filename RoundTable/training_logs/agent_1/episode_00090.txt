@@ -1,7 +1,7 @@
 Episode: 90
-Reward: -983.2804
+Reward: -681.2963
 Epsilon: 0.6337
-Learn Count: 155
-Update Count: 9953
-Average Loss: 1142.3468
-Average Max Q: -1.4227
+Learn Count: 122
+Update Count: 7811
+Average Loss: 62.6181
+Average Max Q: 1.0062
