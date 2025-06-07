@@ -48,7 +48,7 @@ vy = speed * math.sin(angle)
 ball.setVelocity([vx, vy, 0, 0, 0, 0])
 
 # Robot 제어 및 DQN 학습
-while supervisor.step(timestep) != -1:
+while supervisor.step(timestep * 10) != -1:
     # 관찰 데이터 수집
     data_dict = {}
     data_dict['ball_x'] = ball.getField("translation").getSFVec3f()[0]

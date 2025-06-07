@@ -1,7 +1,7 @@
 Episode: 450
-Reward: -510.0752
+Average Reward: 0.2278
 Epsilon: 0.1043
-Learn Count: 729
-Update Count: 46658
-Average Loss: 2967.9259
-Average Max Q: -2.6193
+Learn Count: 60
+Update Count: 3902
+Average Loss: 0.0000
+Average Max Q: nan

@@ -1,7 +1,7 @@
 Episode: 373
-Reward: 0.0000
+Average Reward: -0.6550
 Epsilon: 0.1534
-Learn Count: 624
-Update Count: 39995
+Learn Count: 48
+Update Count: 3084
 Average Loss: 0.0000
-Average Max Q: -17.2482
+Average Max Q: 0.0000

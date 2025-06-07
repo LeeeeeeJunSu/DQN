@@ -1,7 +1,7 @@
 Episode: 211
-Reward: -2.6929
+Average Reward: -0.1630
 Epsilon: 0.3455
-Learn Count: 384
-Update Count: 24633
+Learn Count: 25
+Update Count: 1619
 Average Loss: 0.0000
-Average Max Q: -14.0017
+Average Max Q: nan

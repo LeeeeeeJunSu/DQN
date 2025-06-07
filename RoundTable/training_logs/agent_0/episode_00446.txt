@@ -1,7 +1,7 @@
 Episode: 446
-Reward: -1095.7814
+Average Reward: -0.5301
 Epsilon: 0.1064
-Learn Count: 724
-Update Count: 46380
-Average Loss: 193.5940
-Average Max Q: 1.1688
+Learn Count: 60
+Update Count: 3850
+Average Loss: nan
+Average Max Q: nan

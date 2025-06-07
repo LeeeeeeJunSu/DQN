@@ -1,7 +1,7 @@
 Episode: 138
-Reward: -253.2537
+Average Reward: -0.0998
 Epsilon: 0.4982
-Learn Count: 261
-Update Count: 16720
-Average Loss: 3615.1436
-Average Max Q: -3.7643
+Learn Count: 16
+Update Count: 1057
+Average Loss: 0.0000
+Average Max Q: nan

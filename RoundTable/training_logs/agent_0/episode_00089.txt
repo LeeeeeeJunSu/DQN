@@ -1,7 +1,7 @@
 Episode: 89
-Reward: -2.1542
+Average Reward: -0.9543
 Epsilon: 0.6369
-Learn Count: 182
-Update Count: 11664
+Learn Count: 10
+Update Count: 669
 Average Loss: 0.0000
-Average Max Q: -3.3137
+Average Max Q: 0.0000

@@ -1,7 +1,7 @@
 Episode: 387
-Reward: -2.8312
+Average Reward: -0.2823
 Epsilon: 0.1430
-Learn Count: 639
-Update Count: 40942
+Learn Count: 50
+Update Count: 3222
 Average Loss: 0.0000
-Average Max Q: -3.8746
+Average Max Q: nan

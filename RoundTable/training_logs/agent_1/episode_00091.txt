@@ -1,7 +1,7 @@
 Episode: 91
-Reward: -0.3170
+Average Reward: -0.4751
 Epsilon: 0.6306
-Learn Count: 187
-Update Count: 11970
+Learn Count: 10
+Update Count: 683
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: nan

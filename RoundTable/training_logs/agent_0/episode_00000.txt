@@ -1,7 +1,7 @@
 Episode: 0
-Reward: -1249.3675
+Average Reward: nan
 Epsilon: 0.9950
-Learn Count: 2
-Update Count: 149
-Average Loss: 4.6540
+Learn Count: 0
+Update Count: 4
+Average Loss: 0.0000
 Average Max Q: 0.0000

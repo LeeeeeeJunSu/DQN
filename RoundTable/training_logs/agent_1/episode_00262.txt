@@ -1,7 +1,7 @@
 Episode: 262
-Reward: -450.7995
+Average Reward: 0.1998
 Epsilon: 0.2676
-Learn Count: 480
-Update Count: 30737
-Average Loss: 140.5471
-Average Max Q: 1.0634
+Learn Count: 31
+Update Count: 2046
+Average Loss: 0.0000
+Average Max Q: nan

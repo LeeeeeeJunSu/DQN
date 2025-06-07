@@ -1,7 +1,7 @@
 Episode: 177
-Reward: -13.2931
+Average Reward: -0.0769
 Epsilon: 0.4097
-Learn Count: 342
-Update Count: 21926
+Learn Count: 21
+Update Count: 1358
 Average Loss: 0.0000
-Average Max Q: -8.1479
+Average Max Q: 0.0000

@@ -1,7 +1,7 @@
 Episode: 437
-Reward: -7.2245
+Average Reward: 1.8611
 Epsilon: 0.1113
-Learn Count: 712
-Update Count: 45579
+Learn Count: 58
+Update Count: 3739
 Average Loss: 0.0000
-Average Max Q: -28.8968
+Average Max Q: nan

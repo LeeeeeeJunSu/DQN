@@ -1,7 +1,7 @@
 Episode: 208
-Reward: -819.0125
+Average Reward: -0.4017
 Epsilon: 0.3508
-Learn Count: 382
-Update Count: 24477
-Average Loss: 140.9620
-Average Max Q: -3.6436
+Learn Count: 25
+Update Count: 1604
+Average Loss: nan
+Average Max Q: nan

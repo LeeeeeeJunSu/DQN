@@ -1,7 +1,7 @@
 Episode: 326
-Reward: -167.5369
+Average Reward: -0.6083
 Epsilon: 0.1942
-Learn Count: 567
-Update Count: 36292
-Average Loss: 5539.5468
-Average Max Q: -20.6117
+Learn Count: 41
+Update Count: 2656
+Average Loss: 0.0000
+Average Max Q: nan

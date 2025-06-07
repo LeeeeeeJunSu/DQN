@@ -1,7 +1,7 @@
 Episode: 186
-Reward: -1028.0551
+Average Reward: -0.9268
 Epsilon: 0.3917
-Learn Count: 356
-Update Count: 22839
-Average Loss: 4.0792
-Average Max Q: -2.6481
+Learn Count: 22
+Update Count: 1427
+Average Loss: 0.0000
+Average Max Q: nan

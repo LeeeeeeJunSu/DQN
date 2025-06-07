@@ -1,7 +1,7 @@
 Episode: 62
-Reward: -367.1493
+Average Reward: -1.7854
 Epsilon: 0.7292
-Learn Count: 128
-Update Count: 8242
-Average Loss: 860.2403
-Average Max Q: -0.9314
+Learn Count: 7
+Update Count: 470
+Average Loss: 0.0000
+Average Max Q: nan

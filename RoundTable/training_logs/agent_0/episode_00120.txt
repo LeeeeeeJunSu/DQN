@@ -1,7 +1,7 @@
 Episode: 120
-Reward: -370.0278
+Average Reward: -1.1270
 Epsilon: 0.5452
-Learn Count: 234
-Update Count: 14983
-Average Loss: 473.6453
-Average Max Q: -1.6410
+Learn Count: 14
+Update Count: 916
+Average Loss: 0.0000
+Average Max Q: nan

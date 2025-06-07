@@ -1,7 +1,7 @@
 Episode: 364
-Reward: 125.7122
+Average Reward: -0.4529
 Epsilon: 0.1605
-Learn Count: 616
-Update Count: 39447
-Average Loss: 1420.7480
-Average Max Q: -10.1665
+Learn Count: 46
+Update Count: 2989
+Average Loss: 0.0000
+Average Max Q: nan

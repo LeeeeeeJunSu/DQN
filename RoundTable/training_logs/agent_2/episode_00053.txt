@@ -1,7 +1,7 @@
 Episode: 53
-Reward: -4.7341
+Average Reward: 0.0000
 Epsilon: 0.7629
-Learn Count: 108
-Update Count: 6957
+Learn Count: 6
+Update Count: 402
 Average Loss: 0.0000
-Average Max Q: -0.8881
+Average Max Q: 0.0000

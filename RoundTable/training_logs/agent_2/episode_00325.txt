@@ -1,7 +1,7 @@
 Episode: 325
-Reward: -2.7343
+Average Reward: -0.3514
 Epsilon: 0.1951
-Learn Count: 565
-Update Count: 36191
+Learn Count: 41
+Update Count: 2637
 Average Loss: 0.0000
-Average Max Q: 0.0000
+Average Max Q: nan

@@ -1,7 +1,7 @@
 Episode: 265
-Reward: -4.4789
+Average Reward: -0.6308
 Epsilon: 0.2636
-Learn Count: 484
-Update Count: 30986
+Learn Count: 32
+Update Count: 2061
 Average Loss: 0.0000
-Average Max Q: 4.1107
+Average Max Q: 0.0000

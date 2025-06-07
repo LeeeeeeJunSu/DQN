@@ -1,7 +1,7 @@
 Episode: 404
-Reward: -1410.0619
+Average Reward: -0.6986
 Epsilon: 0.1313
-Learn Count: 657
-Update Count: 42110
-Average Loss: 25.0431
-Average Max Q: -11.3512
+Learn Count: 53
+Update Count: 3394
+Average Loss: nan
+Average Max Q: nan

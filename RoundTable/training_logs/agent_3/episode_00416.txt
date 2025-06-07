@@ -1,7 +1,7 @@
 Episode: 416
-Reward: -88.3291
+Average Reward: -0.0019
 Epsilon: 0.1237
-Learn Count: 680
-Update Count: 43524
-Average Loss: 1635.6894
-Average Max Q: -0.9002
+Learn Count: 55
+Update Count: 3531
+Average Loss: nan
+Average Max Q: nan

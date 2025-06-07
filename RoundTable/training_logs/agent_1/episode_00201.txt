@@ -1,7 +1,7 @@
 Episode: 201
-Reward: -10.2018
+Average Reward: -0.5745
 Epsilon: 0.3633
-Learn Count: 372
-Update Count: 23809
+Learn Count: 24
+Update Count: 1545
 Average Loss: 0.0000
-Average Max Q: -4.4264
+Average Max Q: nan

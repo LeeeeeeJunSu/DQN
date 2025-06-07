@@ -1,7 +1,7 @@
 Episode: 408
-Reward: 84.7818
+Average Reward: -0.5894
 Epsilon: 0.1287
-Learn Count: 662
-Update Count: 42396
-Average Loss: 1420.2000
-Average Max Q: -4.5226
+Learn Count: 53
+Update Count: 3431
+Average Loss: 0.0000
+Average Max Q: nan

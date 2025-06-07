@@ -1,7 +1,7 @@
 Episode: 434
-Reward: -635.5533
+Average Reward: -0.0392
 Epsilon: 0.1130
-Learn Count: 710
-Update Count: 45458
-Average Loss: 35.2212
-Average Max Q: 1.5165
+Learn Count: 58
+Update Count: 3713
+Average Loss: nan
+Average Max Q: nan

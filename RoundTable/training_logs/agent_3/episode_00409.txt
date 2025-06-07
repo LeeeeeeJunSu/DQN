@@ -1,7 +1,7 @@
 Episode: 409
-Reward: -12.8168
+Average Reward: -0.8354
 Epsilon: 0.1281
-Learn Count: 662
-Update Count: 42397
+Learn Count: 53
+Update Count: 3432
 Average Loss: 0.0000
-Average Max Q: -15.5329
+Average Max Q: nan

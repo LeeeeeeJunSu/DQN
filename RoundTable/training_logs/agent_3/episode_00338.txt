@@ -1,7 +1,7 @@
 Episode: 338
-Reward: 104.7147
+Average Reward: -1.0151
 Epsilon: 0.1828
-Learn Count: 579
-Update Count: 37078
-Average Loss: 20.0651
-Average Max Q: -5.0087
+Learn Count: 43
+Update Count: 2770
+Average Loss: 0.0000
+Average Max Q: nan

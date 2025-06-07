@@ -1,7 +1,7 @@
 Episode: 316
-Reward: -745.5867
+Average Reward: -0.5522
 Epsilon: 0.2041
-Learn Count: 556
-Update Count: 35589
-Average Loss: 13.0572
-Average Max Q: -7.4586
+Learn Count: 40
+Update Count: 2560
+Average Loss: nan
+Average Max Q: nan

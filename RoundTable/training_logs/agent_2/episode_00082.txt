@@ -1,7 +1,7 @@
 Episode: 82
-Reward: -341.7463
+Average Reward: -0.5286
 Epsilon: 0.6597
-Learn Count: 173
-Update Count: 11129
-Average Loss: 11.6336
-Average Max Q: -3.0457
+Learn Count: 9
+Update Count: 625
+Average Loss: 0.0000
+Average Max Q: nan

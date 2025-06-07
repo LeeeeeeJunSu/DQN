@@ -1,7 +1,7 @@
 Episode: 378
-Reward: -790.1714
+Average Reward: -0.3247
 Epsilon: 0.1496
-Learn Count: 631
-Update Count: 40433
-Average Loss: 46.1704
-Average Max Q: -5.8992
+Learn Count: 48
+Update Count: 3134
+Average Loss: 0.0000
+Average Max Q: nan

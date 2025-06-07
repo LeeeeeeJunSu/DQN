@@ -1,7 +1,7 @@
 Episode: 114
-Reward: -599.9141
+Average Reward: -0.6669
 Epsilon: 0.5619
-Learn Count: 224
-Update Count: 14353
-Average Loss: 222.8091
-Average Max Q: -0.5313
+Learn Count: 13
+Update Count: 873
+Average Loss: 0.0000
+Average Max Q: nan

@@ -1,7 +1,7 @@
 Episode: 230
-Reward: -38.7072
+Average Reward: -0.8424
 Epsilon: 0.3141
-Learn Count: 425
-Update Count: 27201
-Average Loss: 4544.3086
-Average Max Q: -4.1333
+Learn Count: 27
+Update Count: 1782
+Average Loss: 0.0000
+Average Max Q: nan

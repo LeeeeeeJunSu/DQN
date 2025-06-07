@@ -1,7 +1,7 @@
 Episode: 125
-Reward: -1.1360
+Average Reward: -0.8239
 Epsilon: 0.5318
-Learn Count: 239
-Update Count: 15334
+Learn Count: 14
+Update Count: 951
 Average Loss: 0.0000
 Average Max Q: 0.0000

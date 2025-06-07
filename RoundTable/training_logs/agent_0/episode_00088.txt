@@ -1,7 +1,7 @@
 Episode: 88
-Reward: 729.7899
+Average Reward: -1.6062
 Epsilon: 0.6401
-Learn Count: 182
-Update Count: 11663
-Average Loss: 321.4873
-Average Max Q: -2.4657
+Learn Count: 10
+Update Count: 668
+Average Loss: 0.0000
+Average Max Q: 0.0000
