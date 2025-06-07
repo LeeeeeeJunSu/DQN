@@ -134,7 +134,11 @@ class DQNAgent:
             state_vals.extend(list(agent_positions))
             state_vals.extend(list(gripper_z_list))
             state = np.array(state_vals, dtype=np.float32)
-
+            # nan 값이 있는 경우 Action을 중단 후 계속 진행
+            if np.isnan(state).any():
+                self.output_queue.append(0.0)
+                continue
+            
             reward = 0.0
             if prev_state is not None:
                 delta_vx = spd_x - prev_state[3]

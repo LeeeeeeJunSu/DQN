@@ -1,7 +1,0 @@
-Episode: 451
-Average Reward: -0.3727
-Epsilon: 0.1038
-Learn Count: 60
-Update Count: 3903
-Average Loss: 0.0000
-Average Max Q: nan
