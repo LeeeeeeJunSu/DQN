@@ -10,16 +10,16 @@ if __name__ == '__main__':
     agent_list = []
     for i in range(agent_count):
         agent = DQNAgent(
-            10000,
-            1000,
-            64,
-            1.0,
-            0.01,
-            0.995,
-            20,
-            0.99,
+            replay_buffer_size=10000,
+            warmup_count=1000,
+            batch_size=64,
+            eps_start=1.0,
+            eps_end=0.01,
+            eps_decay=0.995,
+            network_update_freq=20,
+            gamma=0.99,
             agent_name=f"agent_{i}",
-            reward_scale=1000.0,
+            reward_scale=10.0,
             norm_alpha=0.01,
         )
         agent.start()
