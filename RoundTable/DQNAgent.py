@@ -8,7 +8,6 @@ import random
 import numpy as np
 from collections import deque
 import os
-import logging
 
 # 속도 선택을 위한 행동 값 목록
 action_values = [1.0, 0.5, 0.0, -0.5, -1.0]
@@ -52,25 +51,24 @@ class DQNAgent:
         self.agent_name = agent_name
         self.log_dir = os.path.join(log_dir, agent_name)
         os.makedirs(self.log_dir, exist_ok=True)
-        self.summary_log_path = os.path.join(self.log_dir, "training_summary.txt")
 
-        if not os.path.exists(self.summary_log_path):
-            with open(self.summary_log_path, "w") as f:
-                f.write("episode,avg_reward,avg_loss,avg_qmax,epsilon\n")
+        self.step_log_path = os.path.join(self.log_dir, "Step_Debug.txt")
+        self.learn_log_path = os.path.join(self.log_dir, "Learn_Debug.txt")
+        self.episode_log_path = os.path.join(self.log_dir, "Episode_Debug.txt")
 
-        # 에이전트별 로거 설정
-        self.logger = logging.getLogger(agent_name)
-        self.logger.setLevel(logging.INFO)
-        handler = logging.FileHandler(os.path.join(self.log_dir, "agent_debug.log"))
-        formatter = logging.Formatter('%(asctime)s %(message)s')
-        handler.setFormatter(formatter)
-        # 동일 이름의 핸들러 중복 추가 방지
-        if not self.logger.handlers:
-            self.logger.addHandler(handler)
+        if not os.path.exists(self.step_log_path):
+            with open(self.step_log_path, "w") as f:
+                f.write("step,episode,reward,epsilon,state_mean,state_std,max_q\n")
+        if not os.path.exists(self.learn_log_path):
+            with open(self.learn_log_path, "w") as f:
+                f.write("learn_step,loss\n")
+        if not os.path.exists(self.episode_log_path):
+            with open(self.episode_log_path, "w") as f:
+                f.write("episode,avg_reward\n")
 
-        self.logger.info(
-            f"Initialized agent with reward_scale={self.reward_scale}, "
-            f"norm_alpha={self.norm_alpha}")
+        self.step_log = open(self.step_log_path, "a")
+        self.learn_log = open(self.learn_log_path, "a")
+        self.episode_log = open(self.episode_log_path, "a")
 
         self.input_queue = []
         self.output_queue = []
@@ -85,6 +83,9 @@ class DQNAgent:
         self.stop_flag = True
         if self.internal_thread.is_alive():
             self.internal_thread.join()
+        self.step_log.close()
+        self.learn_log.close()
+        self.episode_log.close()
 
     def get_action(self, ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z,
                    agent_positions, gripper_z_list, episode_done):
@@ -126,7 +127,6 @@ class DQNAgent:
         step_count = 0
         episode_index = 0
         loss_list = []
-        qmax_list = []
 
         while not self.stop_flag:
             ball_x, ball_y, ball_z, spd_x, spd_y, spd_z, agent_positions, gripper_z_list, done = self.get_state()
@@ -146,10 +146,9 @@ class DQNAgent:
                     accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
                     reward = float(np.dot(accel_vec, to_center)) * self.reward_scale
 
-            print(f"Update count: {update_count}, Reward: {reward:.4f}, Epsilon: {epsilon:.4f}")
-            self.logger.info(
-                f"step={update_count}, reward={reward:.4f}, epsilon={epsilon:.4f}, "
-                f"reward_scale={self.reward_scale}")
+            # 스텝별 로그 기록
+            mean_str = "" if state_mean is None else ",".join(f"{m:.6f}" for m in state_mean)
+            std_str = "" if state_std is None else ",".join(f"{s:.6f}" for s in state_std)
 
             episode_reward += reward
             step_count += 1
@@ -171,27 +170,23 @@ class DQNAgent:
                 state_mean = warmup_np.mean(axis=0)
                 state_var = warmup_np.var(axis=0)
                 state_std = np.sqrt(state_var) + 1e-8
-                print(f"Warmup complete.")
-                self.logger.info(
-                    "Warmup complete: mean=%s std=%s", state_mean.tolist(),
-                    state_std.tolist()
-                )
+                # 워밍업 완료 로그
 
             if prev_state is not None and prev_action is not None:
                 replay_buffer.append((prev_state, prev_action, reward, state, done))
 
             norm_state = (state - state_mean) / state_std
             state_tensor = torch.tensor([norm_state], dtype=torch.float32)
+            with torch.no_grad():
+                q_network.eval()
+                q_values = q_network(state_tensor)
+                q_network.train()
+                qmax_value = torch.max(q_values).item()
 
             if random.random() < epsilon:
                 action = random.choice(list(range(5)))
             else:
-                with torch.no_grad():
-                    q_network.eval()
-                    q_values = q_network(state_tensor)
-                    q_network.train()
-                    action = int(torch.argmax(q_values).item())
-                    qmax_list.append(torch.max(q_values).item())
+                action = int(torch.argmax(q_values).item())
 
             prev_state = state
             prev_action = action
@@ -203,10 +198,14 @@ class DQNAgent:
                 state_mean = (1 - self.norm_alpha) * state_mean + self.norm_alpha * state
                 state_var = (1 - self.norm_alpha) * state_var + self.norm_alpha * (diff ** 2)
                 state_std = np.sqrt(state_var) + 1e-8
-                self.logger.info(
-                    "norm_update step=%d mean0=%.4f std0=%.4f", update_count,
-                    state_mean[0], state_std[0]
-                )
+                # 정규화 값 갱신
+
+            mean_str = "" if state_mean is None else ",".join(f"{m:.6f}" for m in state_mean)
+            std_str = "" if state_std is None else ",".join(f"{s:.6f}" for s in state_std)
+            self.step_log.write(
+                f"{update_count},{episode_index},{reward:.4f},{epsilon:.4f},{mean_str},{std_str},{qmax_value:.4f}\n"
+            )
+            self.step_log.flush()
 
             if len(replay_buffer) >= self.batch_size and update_count % self.batch_size == 0:
                 batch = random.sample(replay_buffer, self.batch_size)
@@ -227,39 +226,21 @@ class DQNAgent:
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
-                self.logger.info(
-                    f"learn_step={learn_count}, loss={loss.item():.4f}")
+                self.learn_log.write(f"{learn_count},{loss.item():.4f}\n")
+                self.learn_log.flush()
                 loss_list.append(loss.item())
                 learn_count += 1
 
                 if learn_count % self.network_update_freq == 0:
                     target_network.load_state_dict(q_network.state_dict())
-                    self.logger.info(
-                        f"target network updated at learn_step={learn_count}")
 
             if done:
                 epsilon = max(self.eps_end, epsilon * self.eps_decay)
-                avg_loss = np.mean(loss_list) if loss_list else 0.0
-                avg_qmax = np.mean(qmax_list) if qmax_list else 0.0
                 avg_reward = episode_reward / step_count if step_count else 0.0
-                log_path = os.path.join(self.log_dir, f"episode_{episode_index:05d}.txt")
-                with open(log_path, "w") as f:
-                    f.write(f"Episode: {episode_index}\n")
-                    f.write(f"Average Reward: {avg_reward:.4f}\n")
-                    f.write(f"Epsilon: {epsilon:.4f}\n")
-                    f.write(f"Learn Count: {learn_count}\n")
-                    f.write(f"Update Count: {update_count}\n")
-                    f.write(f"Average Loss: {avg_loss:.4f}\n")
-                    f.write(f"Average Max Q: {avg_qmax:.4f}\n")
-
-                with open(self.summary_log_path, "a") as f:
-                    f.write(f"{episode_index},{avg_reward:.4f},{avg_loss:.4f},{avg_qmax:.4f},{epsilon:.4f}\n")
-
-                self.logger.info(
-                    f"episode_end index={episode_index} reward={avg_reward:.4f} epsilon={epsilon:.4f}")
+                self.episode_log.write(f"{episode_index},{avg_reward:.4f}\n")
+                self.episode_log.flush()
 
                 episode_index += 1
                 episode_reward = 0
                 step_count = 0
                 loss_list.clear()
-                qmax_list.clear()
