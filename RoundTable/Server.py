@@ -54,8 +54,8 @@ if __name__ == '__main__':
                             action_list.append(agent_list[i].get_action(ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, gripper_z_list, done))
 
                         # Send Response
-                        print(f"Sending actions: {action_list}")
                         response = json.dumps(action_list)
+                        conn.sendall(response.encode('utf-8'))
             except socket.timeout:
                 continue
 
