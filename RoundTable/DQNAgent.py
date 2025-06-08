@@ -66,9 +66,8 @@ class DQNAgent:
         if not os.path.exists(self.learn_log_path):
             with open(self.learn_log_path, "w") as f:
                 f.write("learn_step,loss\n")
-        if not os.path.exists(self.episode_log_path):
-            with open(self.episode_log_path, "w") as f:
-                f.write("episode,avg_reward\n")
+        with open(self.episode_log_path, "w") as f:
+            f.write("episode,avg_reward,moving_avg_reward\n")
 
         self.step_log = open(self.step_log_path, "a")
         self.learn_log = open(self.learn_log_path, "a")
@@ -126,6 +125,7 @@ class DQNAgent:
         episode_reward = 0
         step_count = 0
         episode_index = 0
+        moving_avg_reward = None
         loss_list = []
 
         while not self.stop_flag:
@@ -146,8 +146,12 @@ class DQNAgent:
                 norm_center = np.linalg.norm(to_center)
                 if norm_center > 0:
                     to_center /= norm_center
-                    accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
-                    reward = float(np.dot(accel_vec, to_center)) * self.reward_scale
+                accel_vec = np.array([delta_vx, delta_vy], dtype=np.float32)
+                accel_reward = float(np.dot(accel_vec, to_center))
+                prev_dist = float(np.linalg.norm(prev_state[:2]))
+                curr_dist = float(np.linalg.norm([ball_x, ball_y]))
+                dist_reward = prev_dist - curr_dist
+                reward = (accel_reward + dist_reward) * self.reward_scale
 
             # 스텝별 로그 기록
             mean_str = "" if state_mean is None else ",".join(f"{m:.6f}" for m in state_mean)
@@ -246,7 +250,13 @@ class DQNAgent:
                 prev_state = None
                 prev_action = None
                 avg_reward = episode_reward / step_count if step_count else 0.0
-                self.episode_log.write(f"{episode_index},{avg_reward:.4f}\n")
+                if moving_avg_reward is None:
+                    moving_avg_reward = avg_reward
+                else:
+                    moving_avg_reward = 0.9 * moving_avg_reward + 0.1 * avg_reward
+                self.episode_log.write(
+                    f"{episode_index},{avg_reward:.4f},{moving_avg_reward:.4f}\n"
+                )
                 self.episode_log.flush()
 
                 episode_index += 1

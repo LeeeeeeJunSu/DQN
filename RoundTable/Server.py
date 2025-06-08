@@ -17,7 +17,7 @@ if __name__ == '__main__':
         network_update_freq=20,
         gamma=0.99,
         agent_name=f"agent_{0}",
-        reward_scale=10.0,
+        reward_scale=5.0,
         norm_alpha=0.01,
     )
     agent.start()
