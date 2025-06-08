@@ -7,23 +7,20 @@ import threading
 if __name__ == '__main__':
     agent_count = 4
 
-    agent_list = []
-    for i in range(agent_count):
-        agent = DQNAgent(
-            replay_buffer_size=10000,
-            warmup_count=1000,
-            batch_size=64,
-            eps_start=1.0,
-            eps_end=0.01,
-            eps_decay=0.999,
-            network_update_freq=20,
-            gamma=0.99,
-            agent_name=f"agent_{i}",
-            reward_scale=10.0,
-            norm_alpha=0.01,
-        )
-        agent.start()
-        agent_list.append(agent)
+    agent = DQNAgent(
+        replay_buffer_size=10000,
+        warmup_count=1000,
+        batch_size=64,
+        eps_start=1.0,
+        eps_end=0.01,
+        eps_decay=0.999,
+        network_update_freq=20,
+        gamma=0.99,
+        agent_name=f"agent_{0}",
+        reward_scale=10.0,
+        norm_alpha=0.01,
+    )
+    agent.start()
 
     while True:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_instance:
@@ -49,9 +46,13 @@ if __name__ == '__main__':
                         done = data_dict['IsDone']
 
                         # Get actions from each agent
+                        action = agent.get_action(ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, gripper_z_list, done)
                         action_list = []
                         for i in range(agent_count):
-                            action_list.append(agent_list[i].get_action(ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, gripper_z_list, done))
+                            if action & (1 << i):
+                                action_list.append(1)
+                            else:
+                                action_list.append(-1)
 
                         # Send Response
                         response = json.dumps(action_list)

@@ -10,7 +10,7 @@ from collections import deque
 import os
 
 # 속도 선택을 위한 행동 값 목록
-action_values = [1.0, 0.5, 0.0, -0.5, -1.0]
+action_values = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
 # 모든 에이전트 로그의 기본 디렉터리
 log_dir = "training_logs"
@@ -135,7 +135,7 @@ class DQNAgent:
             state = np.array(state_vals, dtype=np.float32)
             # nan 값이 있는 경우 Action을 중단 후 계속 진행
             if np.isnan(state).any():
-                self.output_queue.append(0.0)
+                self.output_queue.append(0)
                 continue
 
             reward = 0.0
