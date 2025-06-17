@@ -10,7 +10,7 @@ supervisor = Supervisor()
 timestep = int(supervisor.getBasicTimeStep())
 
 # 사전정의
-agent_count = 4
+agent_count = 8
 reset_standard = 0.8
 
 # Supervisor <-> Robot 소켓 통신 열기 
@@ -48,7 +48,7 @@ vy = speed * math.sin(angle)
 ball.setVelocity([vx, vy, 0, 0, 0, 0])
 
 # Robot 제어 및 DQN 학습
-while supervisor.step(timestep * 10) != -1:
+while supervisor.step(timestep) != -1:
     # 관찰 데이터 수집
     data_dict = {}
     data_dict['ball_x'] = ball.getField("translation").getSFVec3f()[0]
@@ -60,6 +60,8 @@ while supervisor.step(timestep * 10) != -1:
     data_dict['IsDone'] = data_dict['ball_x'] ** 2 + data_dict['ball_y'] ** 2 > reset_standard # Ball이 중심으로부터 0.8이상 떨어지면 종료
     for i in range(agent_count):
         data_dict[f'agent_gripper_z_{i}'] = robot_gripper_list[i].getField("translation").getSFVec3f()[2]
+        data_dict[f'agent_pos_x_{i}'] = robot_body_list[i].getField("translation").getSFVec3f()[0]
+        data_dict[f'agent_pos_y_{i}'] = robot_body_list[i].getField("translation").getSFVec3f()[1]
 
     if(data_dict['IsDone']):
         supervisor.worldReload()

@@ -27,7 +27,7 @@ sensor_device.enable(timestep)
 gripper_device.setPosition(1.0)
 
 # 로봇 제어
-while robot.step(timestep * 10) != -1:
+while robot.step(timestep) != -1:
     action = float(supervisor_communicator_conn.recv(1024).decode())
     cur_pos = sensor_device.getValue()
     

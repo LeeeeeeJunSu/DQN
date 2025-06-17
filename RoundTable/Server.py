@@ -5,13 +5,13 @@ from DQNAgent import DQNAgent
 import threading
 
 if __name__ == '__main__':
-    agent_count = 4
+    agent_count = 8
 
     agent_list = []
     for i in range(agent_count):
         agent = DQNAgent(
             replay_buffer_size=10000,
-            warmup_count=1000,
+            warmup_count=64,
             batch_size=64,
             eps_start=1.0,
             eps_end=0.01,
@@ -19,7 +19,7 @@ if __name__ == '__main__':
             network_update_freq=20,
             gamma=0.99,
             agent_name=f"agent_{i}",
-            reward_scale=10.0,
+            reward_scale=1000.0,
             norm_alpha=0.01,
         )
         agent.start()
@@ -45,13 +45,14 @@ if __name__ == '__main__':
                         ball_speed_x = data_dict['ball_speed_x']
                         ball_speed_y = data_dict['ball_speed_y']
                         ball_speed_z = data_dict['ball_speed_z']
+                        agent_pos_x_list = [data_dict.get(f'agent_pos_x_{i}', 0.0) for i in range(agent_count)]
+                        agent_pos_y_list = [data_dict.get(f'agent_pos_y_{i}', 0.0) for i in range(agent_count)]
                         gripper_z_list = [data_dict.get(f'agent_gripper_z_{i}', 0.0) for i in range(agent_count)]
                         done = data_dict['IsDone']
-
                         # Get actions from each agent
                         action_list = []
                         for i in range(agent_count):
-                            action_list.append(agent_list[i].get_action(ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, gripper_z_list, done))
+                            action_list.append(agent_list[i].get_action(ball_x, ball_y, ball_z, ball_speed_x, ball_speed_y, ball_speed_z, agent_pos_x_list, agent_pos_y_list, gripper_z_list, done))
 
                         # Send Response
                         response = json.dumps(action_list)
