@@ -4,29 +4,32 @@
 
 ## 폴더 구조
 ```
-RoundTable/           # 주요 소스 코드 위치
+RoundTable/           # Root
 ├─ DQNAgent.py        # 멀티 에이전트용 DQN 에이전트
 ├─ Server.py          # 멀티 에이전트 학습/추론 서버
 ├─ controllers/       # Webots 컨트롤러
+│   ├─ ROBOT/ROBOT.py          # 각 에이전트 모터 제어
+│   └─ SUPERVISOR/SUPERVISOR.py# Server와 통신해 행동 전달
 └─ worlds/            # Webots 월드 파일
 ```
-Single-Agent/ 예시 구조는 `README_SingleAgnet시나리오_참고용.md` 를 참고한다.
 
 ## 실행 환경
 - **Python** 3.12
 - **Webots** R2025a
-- 주요 라이브러리: PyTorch 2.7.0, NumPy 1.26.4, Matplotlib 3.8.3, Pandas 2.2.2
+- 주요 라이브러리: PyTorch 2.7.1, NumPy 2.3.0
 
 ## 실행 방법
-1. Webots에서 `roundtable.wbt` 월드를 연다.
-2. 컨트롤러가 `roundtable.py`로 설정되어 있는지 확인한다(Extern 모드).
-3. Python IDE에서 `roundtable.py` 또는 학습 스크립트를 실행한다.
-4. 코드 내 `MODE` 와 `TARGET` 값을 설정하여 학습(train) 또는 검증(val) 모드를 지정한다.
-5. 실행 후 생성되는 `training_logs/` 폴더에서 학습 로그와 모델 스냅샷을 확인한다.
-
-## 프로젝트 요약
-`인공지능시스템_팀과제_최종보고서_4조.docx` 에 따르면 본 프로젝트의 목표는 원탁 작품을 싱글/멀티 에이전트 시나리오로 재현하고 강화학습 성능을 비교하는 것이다. DQN과 SAC 알고리즘을 적용하여 평균 균형 유지 시간을 향상시켰으며, 학습 과정에서 하이퍼파라미터 조정과 보상 설계의 중요성을 확인하였다.
-
-## 참고
-- 실행 예시 및 추가 설명은 `README_SingleAgnet시나리오_참고용.md` 파일에 포함되어 있다.
-- 프로젝트 진행 배경과 세부 실험 결과는 `인공지능시스템_팀과제_최종보고서_4조.docx` 를 참조한다.
+1. 실행 전 환경 설정
+1.1. 필요 라이브러리 설치 전 충돌을 막기 위해 기존 설치 되어 있는 라이브러리를 삭제합니다.
+	pip freeze > RemovedPackage.txt
+	pip uninstall -y -r RemovedPackage.txt
+1.2. 필요 라이브러리를 설치합니다.
+	pip install -r requirements.txt
+2. 실행
+2.1. Server.py 실행
+2.2. Webot Simulation 진행
+3. 결과 확인
+3.1. 스탭 정보: training_logs/agent_%d/Step_Debug.txt
+3.1. 학습 정보: training_logs/agent_%d/Learn_Debug.txt
+3.1. 에피소드 정보: training_logs/agent_%d/Episode_Debug.txt
+3.4. 네트워크 정보: training_logs/agent_%d/network_snapshots
