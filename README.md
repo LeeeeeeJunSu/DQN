@@ -1,22 +1,24 @@
 # 원탁 강화학습 시뮬레이션
-
-본 프로젝트는 최우람 작가의 설치 작품 **"원탁"**을 Webots 시뮬레이터에서 강화학습으로 구현하고, 작품의 메시지를 기술적으로 재해석하는 것을 목표로 한다. 싱글 에이전트와 멀티 에이전트 두 가지 시나리오를 구성하여 DQN과 SAC 알고리즘을 적용하였다.
+## - 멀티 에이전트 시나리오
 
 ## 폴더 구조
 ```
-RoundTable/           # Root
-├─ DQNAgent.py        # 멀티 에이전트용 DQN 에이전트
-├─ Server.py          # 멀티 에이전트 학습/추론 서버
-├─ controllers/       # Webots 컨트롤러
-│   ├─ ROBOT/ROBOT.py          # 각 에이전트 모터 제어
-│   └─ SUPERVISOR/SUPERVISOR.py# Server와 통신해 행동 전달
-└─ worlds/            # Webots 월드 파일
+Root
+├─ README.md # 프로그램 및 구현 사항에 대한 설명 기재
+├─ requirements.txt # 필요한 라이브러리 목록
+└─ RoundTable/
+	├─ DQNAgent.py # 멀티 에이전트용 DQN 에이전트
+	├─ Server.py # 멀티 에이전트 학습/추론 서버
+	├─ controllers/
+	│	├─ ROBOT/ROBOT.py # 각 에이전트/모터 제어
+	│	└─ SUPERVISOR/SUPERVISOR.py # Server와 통신해 행동 전달
+	└─ worlds/ # Webots 월드 파일
 ```
 
 ## 실행 환경
-- **Python** 3.12
+- **Python** 3.13.1
 - **Webots** R2025a
-- 주요 라이브러리: PyTorch 2.7.1, NumPy 2.3.0
+- **주요 라이브러리** torch 2.7.1, numpy 2.3.0
 
 ## 실행 방법
 1. 실행 전 환경 설정
